@@ -1,10 +1,10 @@
 import HTMLFlipBook from 'react-pageflip';
-import bookLeft from './bookLeft.png';
-import bookRight from './bookRight.png';
+import bookLeft from './images/bookLeft.png';
+import bookRight from './images/bookRight.png';
 
 function MyBook(props) {
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '85vh', borderRadius: '50px', background: '#E2D6C0', marginRight: '40px', marginLeft: '170px'}}>
             <HTMLFlipBook width={515} height={590}>
                 <div className="demoPage">
                     <img src={bookLeft} alt="Page 1" />
