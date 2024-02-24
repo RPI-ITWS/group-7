@@ -3,7 +3,7 @@ import Logo from './images/Logo.png';
 
 const Footer = () => {
     return (
-        <div style={{width: '100%', bottom: 0, background: '#FDF3DE', paddingTop:'20px', paddingBottom: '10px'}}>
+        <div style={{width: '100%', bottom: 0, background: '#FDF3DE', paddingTop:'20px', paddingBottom: '5px'}}>
             <div style={{width: 1125.34, height: 112, margin: '0 auto', position: 'relative'}}>
                 <div style={{width: 375, height: 93, left: 0, top: 4, position: 'absolute'}}>
                     <div style={{left: 0, top: 0, position: 'absolute', textAlign: 'center', color: '#E4622E', fontSize: 25, fontFamily: 'Della Respira', fontWeight: '500', wordWrap: 'break-word'}}>MUSEO</div>

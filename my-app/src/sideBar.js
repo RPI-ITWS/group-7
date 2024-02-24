@@ -6,9 +6,9 @@ import Nav_Logo from './images/Nav_Logo.png';
 
 const SideBar = () => {
     return (
-        <div style={{width: '100%', height: '100%', position: 'relative'}}>
+        <div style={{transform:'scale(0.8)', width: '100%', height: '100%', position: 'relative', paddingLeft: '100px'}}>
             <div style={{width: 158, height: 965, left: 0, top: 0, position: 'absolute', background: '#FDF3DE'}}></div>
-            <div style={{width: 97, left: 31, top: 726, position: 'absolute', color: '#4B4338', fontSize: 18, fontFamily: 'Kumbh Sans', fontWeight: '400', wordWrap: 'break-word'}}>Hello, Username!</div>
+            <div style={{width: 97, left: 31, top: 726, position: 'absolute', color: '#4B4338', fontSize: 18, fontFamily: 'Kumbh Sans', fontWeight: '400', wordWrap: 'break-word', overflow: 'hidden'}}>Hello, Username!</div>
             <div style={{width: 102.23, height: 121.5, left: 30, top: 90, position: 'absolute'}}>
                 <img src={Nav_Logo} alt="Profile Logo" style={{width: '100%', height: '100%'}} />
             </div>

@@ -14,14 +14,14 @@ function MyBook(props) {
     };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', height: '82vh', borderRadius: '50px', background: '#E2D6C0', marginRight: '40px', marginLeft: '170px', paddingTop:'40px'}}>
-            <div style={{width: '20vw', height: '20vw', position: 'absolute', left: '60vw', top: '35vh'}}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', height: '82vh', borderRadius: '50px', background: '#E2D6C0', marginRight: '40px', marginLeft: '170px', paddingTop:'20px'}}>
+            <div style={{width: '20vw', height: '20vw', position: 'absolute', left: '67vw', top: '35vh'}}>
                 <img src={Pencil} alt="Pencil" style={{width: '100%', height: '100%'}} />
             </div>
-            <div style={{width: '12vw', height: '12vw', position: 'absolute', left: '15vw', top: '45vh'}}>
+            <div style={{width: '12vw', height: '12vw', position: 'absolute', left: '13vw', top: '60vh'}}>
                 <img src={Circle} alt="Circle" style={{width: '100%', height: '100%'}} onClick={handleCircleClick} />
             </div>
-            <div style={{width: '15vw', height: '15vw', position: 'absolute', left: '23vw', top: '58vh'}}>
+            <div style={{width: '12vw', height: '12vw', position: 'absolute', left: '24vw', top: '64vh'}}>
                 <img src={Inkpad} alt="Inkpad" style={{width: '100%', height: '100%'}} />
             </div>
             
