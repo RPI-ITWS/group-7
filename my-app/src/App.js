@@ -2,6 +2,7 @@ import './App.css';
 import MyBook from './Book';
 import Footer from './footer';
 import SideBar from './sideBar';
+
 function App() {
   return (
     <div className="App" style={{ backgroundColor: '#E2D6C0', width: '100%'}}>
