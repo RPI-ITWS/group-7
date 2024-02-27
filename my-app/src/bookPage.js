@@ -2,7 +2,7 @@ import MyBook from './Book';
 import Footer from './footer';
 import SideBar from './sideBar';
 
-function App() {
+function BookPage() {
   return (
     <div className="App" style={{ backgroundColor: '#E2D6C0', width: '100%', height: '100%'}}>
       <div style={{ width: '100%', height:'30px',  backgroundColor: '#FDF3DE'}}></div>
@@ -17,4 +17,4 @@ function App() {
   );
 }
 
-export default App;
+export default BookPage;
