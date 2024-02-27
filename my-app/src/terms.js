@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from './footer';
 import SideBar from './sideBar';
-function homePage() {
+function Terms() {
   return (
     <div className="App" style={{ backgroundColor: '#E2D6C0', width: '100%', height: '100%'}}>
     <div style={{ width: '100%', height:'30px',  backgroundColor: '#FDF3DE'}}></div>
@@ -15,4 +15,4 @@ function homePage() {
   </div>
   );
 }
-export default homePage;
+export default Terms;

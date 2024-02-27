@@ -2,6 +2,7 @@ import './App.css';
 import MyBook from './Book';
 import Footer from './footer';
 import SideBar from './sideBar';
+import React from 'react';
 
 function App() {
   return (
