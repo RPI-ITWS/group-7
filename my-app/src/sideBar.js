@@ -1,8 +1,8 @@
 import React from 'react';
 import Museum_Icon from './images/Museum_Icon.png';
 import Profile_Icon from './images/Profile_Icon.png';
-import Book_Icon from './images/Book_Icon.png';
 import Nav_Logo from './images/Nav_Logo.png';
+import Book_Icon from './images/Book_Icon.png';
 
 const SideBar = () => {
     return (
@@ -13,15 +13,19 @@ const SideBar = () => {
                 <img src={Nav_Logo} alt="Profile Logo" style={{width: '100%', height: '100%'}} />
             </div>
             <div style={{width: 50, height: 55, left: 54, top: 510.18, position: 'absolute'}}>
-                <img src={Book_Icon} alt="Profile Logo" style={{width: '100%', height: '100%'}} />
-            </div>
-            <div style={{width: 45, height: 50.25, left: 57, top: 391, position: 'absolute'}}>
                 <img src={Profile_Icon} alt="Profile Logo" style={{width: '100%', height: '100%'}} />
             </div>
             <div style={{width: 50, height: 43.52, left: 54, top: 281, position: 'absolute'}}>
                 <img src={Museum_Icon} alt="Museum Logo" style={{width: '100%', height: '100%'}} />
             </div>
+            <div style={{width: 45, height: 50.25, left: 57, top: 391, position: 'absolute'}}>
+                <img src={Book_Icon} alt="Book Logo" style={{width: '100%', height: '100%'}} />
+            </div>
+            <div style={{width: 45, height: 50.25, left: 57, top: 391, position: 'absolute'}}>
+                    
+            </div>
         </div>
     );
 }
+
 export default SideBar;

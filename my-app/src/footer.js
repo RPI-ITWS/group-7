@@ -19,7 +19,7 @@ const Footer = () => {
                 <div style={{width: 162.34, height: 112, left: 960, top: 0, position: 'absolute'}}>
                     <div style={{left: 0, top: 78, position: 'absolute', textAlign: 'right', color: '#4B4338', fontSize: 14, fontFamily: 'Kumbh Sans', fontWeight: '400', wordWrap: 'break-word'}}>© Copyright 2024 Museo<br/>All Rights Reserved</div>
                     <div style={{width: 77.78, height: 68.14, left: 84.56, top: 0, position: 'absolute'}}>
-                        <img style={{width: 77.78, height: 62.64, left: 0, top: 0, position: 'absolute'}} src={Logo} />
+                        <img style={{width: 77.78, height: 62.64, left: 0, top: 0, position: 'absolute'}} src={Logo} alt=""/>
                     </div>
                 </div>
             </div>
