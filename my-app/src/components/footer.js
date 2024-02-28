@@ -8,7 +8,7 @@ const Footer = () => {
                 <div style={{width: 375, height: 93, left: 0, top: 4, position: 'absolute'}}>
                     <div style={{left: 0, top: 0, position: 'absolute', textAlign: 'center', color: '#E4622E', fontSize: 25, fontFamily: 'Della Respira', fontWeight: '500', wordWrap: 'break-word'}}>MUSEO</div>
                     <div style={{width: 375, height: 47, left: 0, top: 46, position: 'absolute'}}>
-                        <Link to="/signIn">
+                        <Link to="/LogIn">
                             <div style={{width: 89, height: 12.89, left: 0, top: 0, position: 'absolute', textAlign: 'center', color: '#4B4338', fontSize: 14, fontFamily: 'Kumbh Sans', fontWeight: '400', wordWrap: 'break-word'}}>Your Account</div>
                         </Link>
                         <Link to="/book">
