@@ -1,7 +1,7 @@
 import './App.css';
 import MyBook from './components/Book';
 import Footer from './components/footer';
-import SideBar from './components/sideBar';
+import SideBar from './sideBar';
 import React from 'react';
 
 function App() {
