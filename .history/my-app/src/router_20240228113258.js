@@ -2,11 +2,11 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import BookPage from "./pages/bookPage";
-import ProfilePage from "./pages/profilePage";
+import ProfilePage from "./profilePage";
 import LogIn from "./pages/login";
 import Contact from "./pages/contact";
 import Credits from "./pages/credits";
-import Terms from "./pages/terms";
+import Terms from "./terms";
 
 function AppRouter() {
     return (

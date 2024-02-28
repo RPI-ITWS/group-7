@@ -6,7 +6,7 @@ import ProfilePage from "./pages/profilePage";
 import LogIn from "./pages/login";
 import Contact from "./pages/contact";
 import Credits from "./pages/credits";
-import Terms from "./pages/terms";
+import Terms from "./terms";
 
 function AppRouter() {
     return (
