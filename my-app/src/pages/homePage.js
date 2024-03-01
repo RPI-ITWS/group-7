@@ -43,8 +43,8 @@ function homePage() {
               museumImg={BMFA}
               imgWidth={250}
               museumName="Boston Museum of Fine Arts"
-              sellingTitle="Selling Point #1"
-              sellingText1="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. "
+              sellingTitle="Unique, Illustrated Stamps for every Museum"
+              sellingText1="For every museum you visit you collect a stamp unique to that museum. And the more you go, the higher the chance of getting special achievement stamps for supporting your local museums!"
               sellingText2="Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales. Quisque sagittis orci ut diam condimentum, vel euismod erat placerat."
             />
 
@@ -52,8 +52,8 @@ function homePage() {
               museumImg={AMNH}
               imgWidth={350}
               museumName="American Museum of Natural History"
-              sellingTitle="Selling Point #2"
-              sellingText1="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. "
+              sellingTitle="Key Into Limited-Time Exhibits"
+              sellingText1="We also offer stamps for limited run exhibits so you can remember your special times there and have something commemorative that you don’t have to spend exuberant amounts of money on like most museum gift shop plushies and t-shirts."
               sellingText2="Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales. Quisque sagittis orci ut diam condimentum, vel euismod erat placerat."
             />
 
@@ -61,8 +61,8 @@ function homePage() {
               museumImg={MOMA}
               imgWidth={300}
               museumName="NYC Museum of Modern Art"
-              sellingTitle="Selling Point #3"
-              sellingText1="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. "
+              sellingTitle="Social Media Without The Brainrot!"
+              sellingText1="Museo is a social form of media that is not social media! Museo gives you the option to friend people you know to see what places they’ve been and what exhibits they like. It makes it easier to trade stories, give recommendations, and plan trips to visit more museums and collect more stamps."
               sellingText2="Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales. Quisque sagittis orci ut diam condimentum, vel euismod erat placerat."
             />
 
