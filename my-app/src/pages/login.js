@@ -22,16 +22,23 @@ function LogIn() {
             background: "#E2D6C0",
             marginRight: "40px",
             marginLeft: "170px",
+
             paddingTop: "20px",
             overflow: "hidden",
           }}
         >
           <div>
+            <br />
+            <br />
+            <br />
             <h1
               style={{
                 fontFamily: "Della Respira, serif",
                 color: "#E4622E",
                 marginBottom: "0",
+                textAlign: "center",
+                fontSize: "36px",
+                fontWeight: "300",
               }}
             >
               Create your Museo Account
@@ -40,7 +47,7 @@ function LogIn() {
               style={{
                 fontFamily: "Della Respira, serif",
                 fontSize: "21px",
-                textAlign: "left",
+                textAlign: "center",
                 marginTop: "0px",
                 fontWeight: "300",
                 marginLeft: "5px",
@@ -72,7 +79,7 @@ function LogIn() {
                       borderRadius: "15px",
                       border: "none",
                       marginBottom: "10px",
-                      height: "24px",
+                      height: "28px",
                       width: "300px",
                     }}
                   ></input>
@@ -88,8 +95,8 @@ function LogIn() {
                       borderRadius: "15px",
                       border: "none",
                       marginBottom: "10px",
-                      height: "24px",
-                      width: "300px",
+                      height: "28px",
+                      width: "400px",
                     }}
                   ></input>
                   <br></br>
@@ -104,8 +111,8 @@ function LogIn() {
                       borderRadius: "15px",
                       border: "none",
                       marginBottom: "10px",
-                      height: "24px",
-                      width: "300px",
+                      height: "28px",
+                      width: "400px",
                     }}
                   ></input>
                   <br></br>
@@ -120,8 +127,8 @@ function LogIn() {
                       borderRadius: "15px",
                       border: "none",
                       marginBottom: "10px",
-                      height: "24px",
-                      width: "300px",
+                      height: "28px",
+                      width: "400px",
                     }}
                   ></input>
                   <br></br>
@@ -158,6 +165,10 @@ function LogIn() {
                 alt="Museam"
                 width="500"
                 height="333"
+                style={{
+                  borderRadius: "30px",
+                  boxShadow: " 0px 4px 4px rgba(0, 0, 0, 0.25)",
+                }}
               ></img>
             </div>
           </div>
