@@ -155,9 +155,14 @@ main button:hover {
 .sellingTextL{
   margin-top: 45px;
 }
+
+.sellingPointL p {
+  margin-top: 2px;
+}
 .sellingPointL h4 {
   margin-bottom: 0;
   margin-top: 0;
+  font-size: 28px;
 }
 
 /*============== Selling Points: Right-Side Images ============*/
@@ -184,9 +189,13 @@ main button:hover {
   margin-left: 40px;
   display:inline;
 }
+.sellingPointR p {
+  margin-top: 2px;
+}
 
 .sellingPointR h4 {
   margin-bottom: 0;
+  font-size: 28px;
 }
 
 /*==========Final Sell===============*/

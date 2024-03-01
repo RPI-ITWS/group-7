@@ -7,12 +7,13 @@ function Hero(params) {
         <h2>MUSEO</h2>
         <h4>Your museum stampbook!</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa
-          mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
-          mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
-          tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non
-          suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at
-          maximus ante fermentum sit amet.
+          Have you ever wanted to track museum visits and collect stamps to
+          remember all of your trips instead of forgetting where you put the
+          tickets? Have you ever lost all of your precious belongings to a flood
+          or a fire? Don't trust a scrapbook, those suck, make it digital. Here
+          at Museo we provide you with a scrapbook for all your museum visits
+          that can never be lost or destroyed! Get out and go explore more
+          museums today!
         </p>
         <button>SIGN UP</button>
       </div>
