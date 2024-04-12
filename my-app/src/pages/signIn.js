@@ -6,12 +6,12 @@ import MuseamImage from "../images/Museam.png";
 import { useState } from "react";
 // Imports for firebase 
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 // import { getAuth } from "firebase/auth";
 
 /**
  * Function facilitates account creation for new users
- * Form submission done with react usestate module 
+ * Form submission done with react use state module 
  */
 function LogIn() {
 
@@ -24,16 +24,15 @@ function LogIn() {
   const app = initializeApp(process.env.firebaseConfig);
   const auth = getAuth(app);
 
-  createUserWithEmailAndPassword(auth, email, password)
+  signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
-    // Signed up 
+    // Signed in 
     const user = userCredential.user;
     // ...
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    // ..
   });
 
   return (
@@ -101,22 +100,6 @@ function LogIn() {
                 }}
               >
                 <form>
-                  <label for="username">Username:</label>
-                  <br></br>
-                  <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    style={{
-                      backgroundColor: "#FDF3DE",
-                      borderRadius: "15px",
-                      border: "none",
-                      marginBottom: "10px",
-                      height: "28px",
-                      width: "300px",
-                    }}
-                  ></input>
-                  <br></br>
                   <label for="email">Email:</label>
                   <br></br>
                   <input
@@ -151,22 +134,6 @@ function LogIn() {
                     }}
                     // Update password
                     onChange={(e) => setPassword(e.target.value)}
-                  ></input>
-                  <br></br>
-                  <label for="confirmPassword">Confirm Password:</label>
-                  <br></br>
-                  <input
-                    type="text"
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    style={{
-                      backgroundColor: "#FDF3DE",
-                      borderRadius: "15px",
-                      border: "none",
-                      marginBottom: "10px",
-                      height: "28px",
-                      width: "400px",
-                    }}
                   ></input>
                   <br></br>
                   <input type="checkbox" name="rememberMe" />

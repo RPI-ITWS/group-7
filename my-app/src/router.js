@@ -7,6 +7,7 @@ import LogIn from "./pages/login";
 import Contact from "./pages/contact";
 import Credits from "./pages/credits";
 import Terms from "./pages/terms";
+import SignIn from "./pages/signIn";
 
 function AppRouter() {
     return (
@@ -21,6 +22,7 @@ function AppRouter() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/credits" element={<Credits />} />
                 <Route path="/terms" element={<Terms />} />
+                <Route path="/signIn" element={<SignIn />} />
             </Routes>
         </BrowserRouter>
     );
