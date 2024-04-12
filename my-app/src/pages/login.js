@@ -2,7 +2,36 @@ import React from "react";
 import Footer from "../components/footer";
 import SideBar from "../components/sideBar";
 import MuseamImage from "../images/Museam.png";
+// Form update useState
+import { useState } from "react";
+// Imports for firebase 
+import { initializeApp } from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+// import { getAuth } from "firebase/auth";
+
 function LogIn() {
+
+  // Hold email 
+  const [email, setEmail] = useState("");
+  // Hold password
+  const [password, setPassword] = useState("");
+
+  // Initialize Firebase auth
+  const app = initializeApp(process.env.firebaseConfig);
+  const auth = getAuth(app);
+
+  createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+
   return (
     <div
       className="App"
@@ -98,6 +127,8 @@ function LogIn() {
                       height: "28px",
                       width: "400px",
                     }}
+                    // Update email
+                    onChange={(e) => setEmail(e.target.value)}
                   ></input>
                   <br></br>
                   <label for="password">Password:</label>
@@ -114,6 +145,8 @@ function LogIn() {
                       height: "28px",
                       width: "400px",
                     }}
+                    // Update password
+                    onChange={(e) => setPassword(e.target.value)}
                   ></input>
                   <br></br>
                   <label for="confirmPassword">Confirm Password:</label>
