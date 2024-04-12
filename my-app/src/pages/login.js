@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "../components/footer";
 import SideBar from "../components/sideBar";
 import MuseamImage from "../images/Museam.png";
+import "./login.css";
 function LogIn() {
   return (
     <div
@@ -162,9 +163,8 @@ function LogIn() {
 
               <img
                 src={MuseamImage}
-                alt="Museam"
-                width="500"
-                height="333"
+                alt="A patinaed statue from the Louvre of a man looking up"
+                width="550"
                 style={{
                   borderRadius: "30px",
                   boxShadow: " 0px 4px 4px rgba(0, 0, 0, 0.25)",
