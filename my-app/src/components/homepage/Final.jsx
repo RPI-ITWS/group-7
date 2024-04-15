@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function FinalSell() {
   return (
     <div className="finalSell">
@@ -5,7 +7,9 @@ function FinalSell() {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
         Aliquam in hendrerit urna.
       </h6>
-      <button>JOIN MUSEO!</button>
+      <Link to="/LogIn">
+        <button>JOIN MUSEO!</button>
+      </Link>
     </div>
   );
 }

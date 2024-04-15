@@ -1,7 +1,9 @@
 import React from "react";
 import Footer from "../components/footer";
 import SideBar from "../components/sideBar";
-import MuseamImage from "../images/Museam.png";
+import MuseumImage from "../images/MakeAcc.png";
+import "./login.css";
+
 function LogIn() {
   return (
     <div
@@ -33,7 +35,6 @@ function LogIn() {
             <br />
             <h1
               style={{
-                fontFamily: "Della Respira, serif",
                 color: "#E4622E",
                 marginBottom: "0",
                 textAlign: "center",
@@ -43,21 +44,8 @@ function LogIn() {
             >
               Create your Museo Account
             </h1>
-            <p
-              style={{
-                fontFamily: "Della Respira, serif",
-                fontSize: "21px",
-                textAlign: "center",
-                marginTop: "0px",
-                fontWeight: "300",
-                marginLeft: "5px",
-              }}
-            >
-              Enter your details below and start collecting!
-            </p>
-            <div
-              style={{ display: "flex", fontFamily: "Della Respira, serif" }}
-            >
+            <h3>Enter your details below and start collecting!</h3>
+            <div style={{ display: "flex" }}>
               <div
                 style={{
                   margin: "2%",
@@ -74,47 +62,16 @@ function LogIn() {
                     type="text"
                     id="username"
                     name="username"
-                    style={{
-                      backgroundColor: "#FDF3DE",
-                      borderRadius: "15px",
-                      border: "none",
-                      marginBottom: "10px",
-                      height: "28px",
-                      width: "300px",
-                    }}
+                    style={{ width: "300px" }}
                   ></input>
                   <br></br>
                   <label for="email">Email:</label>
                   <br></br>
-                  <input
-                    type="text"
-                    id="email"
-                    name="email"
-                    style={{
-                      backgroundColor: "#FDF3DE",
-                      borderRadius: "15px",
-                      border: "none",
-                      marginBottom: "10px",
-                      height: "28px",
-                      width: "400px",
-                    }}
-                  ></input>
+                  <input type="text" id="email" name="email"></input>
                   <br></br>
                   <label for="password">Password:</label>
                   <br></br>
-                  <input
-                    type="text"
-                    id="password"
-                    name="password"
-                    style={{
-                      backgroundColor: "#FDF3DE",
-                      borderRadius: "15px",
-                      border: "none",
-                      marginBottom: "10px",
-                      height: "28px",
-                      width: "400px",
-                    }}
-                  ></input>
+                  <input type="text" id="password" name="password"></input>
                   <br></br>
                   <label for="confirmPassword">Confirm Password:</label>
                   <br></br>
@@ -122,54 +79,27 @@ function LogIn() {
                     type="text"
                     id="confirmPassword"
                     name="confirmPassword"
-                    style={{
-                      backgroundColor: "#FDF3DE",
-                      borderRadius: "15px",
-                      border: "none",
-                      marginBottom: "10px",
-                      height: "28px",
-                      width: "400px",
-                    }}
                   ></input>
                   <br></br>
-                  <input type="checkbox" name="rememberMe" />
+                  <input
+                    type="checkbox"
+                    name="rememberMe"
+                    style={{ width: "auto", height: "auto" }}
+                  />
                   <label> Remember Me </label>
                 </form>
 
-                <p style={{ fontSize: "10px" }}>
-                  By creating an account you agree to our Terms & Privacy
-                </p>
-                <button
-                  style={{
-                    textAlign: "center",
-                    textDecoration: "none",
-                    display: "inline-block",
-                    margin: "4px 2px",
-                    cursor: "pointer",
-                    borderRadius: "50px",
-                    backgroundColor: "#fdf3de",
-                    border: "2px solid",
-                    fontFamily: "Kumbh Sans",
-                    color: "#e4622e",
-                    padding: "5px 25px",
-                    fontSize: "18px",
-                    transition: "ease-in-out 0.25s",
-                  }}
-                >
-                  Create Account
-                </button>
+                <p>By creating an account you agree to our Terms & Privacy</p>
+                <button>Create Account</button>
               </div>
 
               <img
-                src={MuseamImage}
-                alt="Museam"
-                width="500"
-                height="333"
-                style={{
-                  borderRadius: "30px",
-                  boxShadow: " 0px 4px 4px rgba(0, 0, 0, 0.25)",
-                }}
-              ></img>
+                src={MuseumImage}
+                alt="A patinaed statue from the Louvre of a man looking up"
+                width="590"
+                id="accountCreationImg"
+                height={"auto"}
+              />
             </div>
           </div>
         </div>

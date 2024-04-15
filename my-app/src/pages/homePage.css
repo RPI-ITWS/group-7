@@ -29,14 +29,14 @@ h3 {
 
 h4 {
   font-size: 21px;
-  color: #499D7B;
+  color: #378364;
   font-weight: 200;
 }
 
 main p {
   font-size: 16px;
   color: #4B4338;
-  
+  font-style: normal;
 }
 
 main img {
@@ -51,19 +51,21 @@ main div {
 
 main button {
   border-radius: 50px;
-  background-color: #fdf3de;
+  background-color: #499D7B;
   border: 2px solid;
   font-family: "Kumbh Sans", sans-serif;
-  color: #e4622e;
-
+  color: #fdf3de;
+  margin-top: -5px;
   padding: 5px 25px;
   font-size: 18px;
+  border: #499D7B 2px solid;
   transition: ease-in-out 0.25s;
 }
 main button:hover {
   background-color: #e4622e;
   color: #fdf3de;
   border: #e4622e 2px solid;
+  transition: ease-in-out 0.25s;
 }
 /*============= Hero Section =============*/
 

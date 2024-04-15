@@ -1,4 +1,5 @@
 import pic from "../../images/homeImages/Museo.jpg";
+import { Link } from "react-router-dom";
 
 function Hero(params) {
   return (
@@ -15,7 +16,9 @@ function Hero(params) {
           that can never be lost or destroyed! Get out and go explore more
           museums today!
         </p>
-        <button>SIGN UP</button>
+        <Link to="/LogIn">
+          <button>SIGN UP</button>
+        </Link>
       </div>
       <img
         className="heroImg"
