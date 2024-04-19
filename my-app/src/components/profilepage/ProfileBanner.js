@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import pic from "../../images/homeImages/Museo.jpg";
 function ProfileBanner(params) {
   return (
