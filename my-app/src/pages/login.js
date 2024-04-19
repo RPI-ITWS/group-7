@@ -20,7 +20,7 @@ function LogIn() {
             justifyContent: "center",
             alignItems: "flex-start",
             height: "82vh",
-            borderRadius: "50px",
+            borderRadius: "20px",
             background: "#E2D6C0",
             marginRight: "40px",
             marginLeft: "170px",
