@@ -12,6 +12,7 @@ app.listen(port, () => {
  * Retrieve profile data from mongo
  */
 app.get("/profile/:uid", (req, res) => {
+
   let user = req.params.uid;
   console.log("Retrieving " + user + " profile");
   async function retrieveProfile(){
