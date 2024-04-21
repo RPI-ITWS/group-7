@@ -28,7 +28,7 @@ app.get("/profile", (req, res) => {
     } catch (error) {
       console.error("Error getting article:", error);
     } finally {
-      await client.close();
+      // await client.close();
     }
   }
   retrieveProfile();
@@ -66,7 +66,7 @@ app.post("/profile", (req, res) => {
       } catch (error) {
         console.error("Error getting article:", error);
       } finally {
-        await client.close();
+        // await client.close();
       }
     }
     createProfile();
@@ -106,7 +106,7 @@ app.put("/profile/:user", (req, res) => {
       } catch (error) {
         console.error("Error getting article:", error);
       } finally {
-        await client.close();
+        // await client.close();
       }
     }
     updateProfile();
