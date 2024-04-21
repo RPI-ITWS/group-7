@@ -1,4 +1,5 @@
 import React from "react";
+import  { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import BookPage from "./pages/bookPage";
@@ -8,7 +9,29 @@ import Contact from "./pages/contact";
 import Credits from "./pages/credits";
 import Terms from "./pages/terms";
 
+const defaultUserData = {
+    username: 'Name',
+    email: '',
+    dateJoined: '',
+    profileBio: '......'
+  };
+
 function AppRouter() {
+    const [userData, setUserData] = useState(defaultUserData);
+
+    useEffect(() => {
+        fetch("./profile/exampleUID")
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            setUserData(data);
+          }).catch((error) => {
+            console.error('Error:', error);
+            setUserData(defaultUserData);
+          });
+      }, []);
+
+
     return (
         <BrowserRouter>
             <Routes>
@@ -16,7 +39,7 @@ function AppRouter() {
                 <Route path="/home" element={<HomePage />} />
                 <Route path="/book" element={<BookPage />} />
                 <Route path="*" element={<HomePage />} />
-                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/profile" element={<ProfilePage message={userData}/>} />
                 <Route path="/login" element={<LogIn />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/credits" element={<Credits />} />

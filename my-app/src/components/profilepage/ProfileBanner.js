@@ -1,29 +1,10 @@
 // import { Link } from "react-router-dom";
-import React, { useEffect, useState } from 'react';
 import pic from "../../images/homeImages/Museo.jpg";
 
-const defaultUserData = {
-  username: 'Default User',
-  email: 'default@example.com',
-  dateJoined: 'N/A',
-  profileBio: 'This is a default user profile.'
-};
 
 function ProfileBanner(params) {
+  const {message} = params;
 
-  const [userData, setUserData] = useState(defaultUserData);
-
-  useEffect(() => {
-    fetch("./profile/exampleUID")
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setUserData(data);
-      }).catch((error) => {
-        console.error('Error:', error);
-        setUserData(defaultUserData);
-      });
-  }, []);
 
   function toggleEdit() {
     var textBox = document.getElementById('editableTextBox');
@@ -37,11 +18,11 @@ function ProfileBanner(params) {
       console.log(event.target.innerText)
       // send data to server
       fetch("./profile", {
-        method: "POST",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ profileBio: event.target.innerText }),
+        body: JSON.stringify({ "profileBio": event.target.innerText, "uid": "exampleUID" }),
       })
         .then((response) => response.json())
         .then((data) => {
@@ -54,8 +35,9 @@ function ProfileBanner(params) {
     }
   };
 
-
-
+  if (!message) {
+    return <div>Loading...</div>;
+  }
 
 
   return (
@@ -73,14 +55,14 @@ function ProfileBanner(params) {
         }}
       />
       <div className="basicInfo">
-        <h3>{userData.username}</h3>
-        <p>Email: {userData.email}</p>
-        <p>Member Since: {userData.dateJoined}</p>
+        <h3>{message.username}</h3>
+        <p>Email: {message.email}</p>
+        <p>Member Since: {message.dateJoined}</p>
       </div>
       <div className="bio">
         <h4>Profile Bio</h4>
         <div id="editableTextBox" contenteditable="false" onKeyDown={handleKeyPress}>
-          {userData.profileBio}
+          {message.profileBio}
         </div>
         <svg
           width="30"
