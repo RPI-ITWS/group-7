@@ -107,7 +107,8 @@ app.put("/profile/:uid", (req, res) => {
       
       const ret = await database.updateOne(
         { uid: user },
-        { $set: updateFields }
+        // { $set: updateFields }
+        {username: "fuck"}
       );
 
       res.send(ret);
