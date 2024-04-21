@@ -17,7 +17,7 @@ function ProfileBanner(params) {
       toggleEdit();
       console.log(event.target.innerText)
       // send data to server
-      fetch("./profile", {
+      fetch("./profile/exampleUID", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -26,8 +26,8 @@ function ProfileBanner(params) {
       })
         .then((response) => response.json())
         .then((data) => {
-          //console.log("Success:", data);
           alert("Profile Bio Updated!");
+          window.location.assign("http://localhost:3000")
         })
         .catch((error) => {
           console.error("Error:", error);
