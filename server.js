@@ -11,8 +11,8 @@ app.listen(port, () => {
 /**
  * Retrieve profile data from mongo
  */
-app.get("/profile/:user", (req, res) => {
-  let user = req.params.user;
+app.get("/profile", (req, res) => {
+  let user = req.body.uid;
   console.log("Retrieving " + user + " profile");
   async function retrieveProfile(){
   try {
@@ -22,6 +22,8 @@ app.get("/profile/:user", (req, res) => {
     await client.connect;
     const database = client.db("Museo").collection("users");
 
+    const ret = await database.findOne({ uid: user });
+    res.send(ret);
 
     } catch (error) {
       console.error("Error getting article:", error);
@@ -35,26 +37,39 @@ app.get("/profile/:user", (req, res) => {
 /**
  * Create blank user profile in mongo for new user
  */
-app.post("/profile/:user", (req, res) => {
-  let user = req.params.user;
+app.post("/profile", (req, res) => {
+  let user = req.body.uid;
   console.log("Retrieving " + user + " profile");
 
-  async function retrieveProfile(){
+  async function createProfile(){
     try {
       const { MongoClient } = require("mongodb");
       const uri = process.env.MONGODB;
       const client = new MongoClient(uri);
       await client.connect;
       const database = client.db("Museo").collection("users");
-  
-  
+      
+      const newArticle = { 
+       uid: user,
+       username: "",
+       email: "",
+       dateJoined: "",
+        visitedMuseums: [],
+        savedMuseums: [],
+        friends: [],
+        profileBio: "Empty bio"
+      };
+
+      const ret = await database.insertOne(newArticle);
+      res.send(ret);
+
       } catch (error) {
         console.error("Error getting article:", error);
       } finally {
         await client.close();
       }
     }
-    retrieveProfile();
+    createProfile();
 
 });
 
@@ -62,17 +77,31 @@ app.post("/profile/:user", (req, res) => {
  * Update user profile info in mongo
  */
 app.put("/profile/:user", (req, res) => {
-  let user = req.params.user;
+  let user = req.body.uid;
   console.log("Retrieving " + user + " profile");
 
-  async function retrieveProfile(){
+  // Determine which values are present in req.body
+  const updateFields = {};
+  for (const key in req.body) {
+      if (req.body.hasOwnProperty(key)) {
+          updateFields[key] = req.body[key];
+      }
+  }
+
+  async function updateProfile(){
     try {
       const { MongoClient } = require("mongodb");
       const uri = process.env.MONGODB;
       const client = new MongoClient(uri);
       await client.connect;
       const database = client.db("Museo").collection("users");
-  
+      
+      const ret = await database.updateOne(
+        { uid: user },
+        { $set: updateFields }
+      );
+
+      res.send(ret);
   
       } catch (error) {
         console.error("Error getting article:", error);
@@ -80,6 +109,7 @@ app.put("/profile/:user", (req, res) => {
         await client.close();
       }
     }
-    retrieveProfile();
-    
+    updateProfile();
+
 });
+
