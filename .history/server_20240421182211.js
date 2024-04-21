@@ -19,6 +19,7 @@ app.get("/profile/:uid", (req, res) => {
     console.log("debug point 0");
     const { MongoClient } = require("mongodb");
     console.log("debug point 0.5");
+    
     const uri = process.env.MONGODB;
     console.log(uri);
     console.log("debug point 0.75");
