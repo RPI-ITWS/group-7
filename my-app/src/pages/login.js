@@ -7,7 +7,7 @@ import "./login.css";
 function LogIn() {
   return (
     <div
-      className="App"
+      className="App login"
       style={{ backgroundColor: "#E2D6C0", width: "100%", height: "100%" }}
     >
       <div
@@ -20,7 +20,7 @@ function LogIn() {
             justifyContent: "center",
             alignItems: "flex-start",
             height: "82vh",
-            borderRadius: "50px",
+            borderRadius: "20px",
             background: "#E2D6C0",
             marginRight: "40px",
             marginLeft: "170px",
@@ -56,49 +56,53 @@ function LogIn() {
                 }}
               >
                 <form>
-                  <label for="username">Username:</label>
-                  <br></br>
-                  <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    style={{ width: "300px" }}
-                  ></input>
-                  <br></br>
-                  <label for="email">Email:</label>
-                  <br></br>
-                  <input type="text" id="email" name="email"></input>
-                  <br></br>
-                  <label for="password">Password:</label>
-                  <br></br>
-                  <input type="text" id="password" name="password"></input>
-                  <br></br>
-                  <label for="confirmPassword">Confirm Password:</label>
-                  <br></br>
-                  <input
-                    type="text"
-                    id="confirmPassword"
-                    name="confirmPassword"
-                  ></input>
-                  <br></br>
+                  <div className="typeInput">
+                    <label for="username">Username:</label>
+                    <br></br>
+                    <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      style={{ width: "300px" }}
+                    ></input>
+                    <br></br>
+                    <label for="email">Email:</label>
+                    <br></br>
+                    <input type="text" id="email" name="email"></input>
+                    <br></br>
+                    <label for="password">Password:</label>
+                    <br></br>
+                    <input type="text" id="password" name="password"></input>
+                    <br></br>
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <br></br>
+                    <input
+                      type="text"
+                      id="confirmPassword"
+                      name="confirmPassword"
+                    ></input>
+                  </div>
+
                   <input
                     type="checkbox"
                     name="rememberMe"
-                    style={{ width: "auto", height: "auto" }}
+                    style={{ width: "auto", height: "auto", margin: "2px" }}
                   />
-                  <label> Remember Me </label>
+                  <label style={{ fontSize: "14px" }}> Remember Me </label>
                 </form>
 
-                <p>By creating an account you agree to our Terms & Privacy</p>
+                <p>
+                  By creating an account you agree to our{" "}
+                  <strong>Terms & Privacy</strong>
+                </p>
                 <button>Create Account</button>
               </div>
 
               <img
                 src={MuseumImage}
                 alt="A patinaed statue from the Louvre of a man looking up"
-                width="590"
+                width="550"
                 id="accountCreationImg"
-                height={"auto"}
               />
             </div>
           </div>
