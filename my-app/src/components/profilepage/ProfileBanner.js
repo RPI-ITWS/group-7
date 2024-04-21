@@ -17,10 +17,11 @@ function ProfileBanner(params) {
     fetch("./profile")
       .then(response => response.json())
       .then(data => {
+        console.log(data);
         setUserData(data);
       }).catch((error) => {
         console.error('Error:', error);
-        setUserData(defaultUserData); // set to default data on error
+        setUserData(defaultUserData);
       });
   }, []);
 
