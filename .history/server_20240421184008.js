@@ -85,7 +85,7 @@ app.post("/profile", (req, res) => {
 /**
  * Update user profile info in mongo
  */
-app.put("/profile/:uid", (req, res) => {
+app.put("/profile/:user", (req, res) => {
   let user = req.params.uid;
   console.log("Retrieving " + user + " profile");
 
