@@ -1,4 +1,5 @@
 import React from "react";
+//import  { useEffect, useState } from 'react';
 import Footer from "../components/footer";
 import SideBar from "../components/sideBar";
 import "./profilePage.css";
@@ -7,7 +8,11 @@ import MuseumList from "../components/profilepage/MuseumList";
 import FriendsList from "../components/profilepage/FriendsList";
 import { Navigate } from "react-router-dom";
 
-function ProfilePage() {
+
+
+function ProfilePage(params) {
+  const { message } = params;
+
   if (!document.cookie) {
     return <Navigate to="/login" />;
   }
@@ -27,18 +32,18 @@ function ProfilePage() {
               <h2 style={{ textAlign: "center" }}>Your Profile</h2>
             </div>
             <div class="profileBanner box">
-              <ProfileBanner />
+              <ProfileBanner message={message} />
             </div>
             <div className="columns">
               <div className="visitedMuseums box">
-                <MuseumList listType="Visited Museums" />
+                <MuseumList params={{ listType: "Visited Museums" }} message={message} />
               </div>
               <div className="savedMuseums box">
-                <MuseumList listType="Saved Museums" />
+                <MuseumList params={{ listType: "Saved Museums" }} message={message} />
               </div>
               <div className="friendsList box">
                 {" "}
-                <FriendsList />
+                <FriendsList message={message}/>
               </div>
             </div>
           </div>

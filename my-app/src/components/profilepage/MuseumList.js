@@ -1,13 +1,15 @@
 // import { Link } from "react-router-dom";
 
-function MuseumList(params) {
+function MuseumList({params, message}) {
+  const museums = params.listType === "Visited Museums" ? message.visitedMuseums : message.savedMuseums;
+  
   return (
     <>
       <h3>{params.listType}</h3>
       <ul>
-        <li>Museum #1</li>
-        <li>Museum #2</li>
-        <li>Museum #3</li>
+        {museums.map((museum, index) => (
+          <li key={index}>{museum}</li>
+        ))}
       </ul>
     </>
   );
