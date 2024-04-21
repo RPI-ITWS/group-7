@@ -5,8 +5,8 @@ import pic from "../../images/homeImages/Museo.jpg";
 const defaultUserData = {
   username: 'Default User',
   email: 'default@example.com',
-  memberSince: 'N/A',
-  bio: 'This is a default user profile.'
+  dateJoined: 'N/A',
+  profileBio: 'This is a default user profile.'
 };
 
 function ProfileBanner(params) {
@@ -14,7 +14,7 @@ function ProfileBanner(params) {
   const [userData, setUserData] = useState(defaultUserData);
 
   useEffect(() => {
-    fetch("./profile")
+    fetch("./profile/exampleUID")
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -45,7 +45,7 @@ function ProfileBanner(params) {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("Success:", data);
+          //console.log("Success:", data);
           alert("Profile Bio Updated!");
         })
         .catch((error) => {
@@ -75,12 +75,12 @@ function ProfileBanner(params) {
       <div className="basicInfo">
         <h3>{userData.username}</h3>
         <p>Email: {userData.email}</p>
-        <p>Member Since: {userData.memberSince}</p>
+        <p>Member Since: {userData.dateJoined}</p>
       </div>
       <div className="bio">
         <h4>Profile Bio</h4>
         <div id="editableTextBox" contenteditable="false" onKeyDown={handleKeyPress}>
-          {userData.bio}
+          {userData.profileBio}
         </div>
         <svg
           width="30"
