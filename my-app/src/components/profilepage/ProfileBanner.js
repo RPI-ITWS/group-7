@@ -1,6 +1,62 @@
 // import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
 import pic from "../../images/homeImages/Museo.jpg";
+
+const defaultUserData = {
+  username: 'Default User',
+  email: 'default@example.com',
+  memberSince: 'N/A',
+  bio: 'This is a default user profile.'
+};
+
 function ProfileBanner(params) {
+
+  const [userData, setUserData] = useState(defaultUserData);
+
+  useEffect(() => {
+    fetch("./profile")
+      .then(response => response.json())
+      .then(data => {
+        setUserData(data);
+      }).catch((error) => {
+        console.error('Error:', error);
+        setUserData(defaultUserData); // set to default data on error
+      });
+  }, []);
+
+  function toggleEdit() {
+    var textBox = document.getElementById('editableTextBox');
+    var isEditable = textBox.contentEditable;
+    textBox.contentEditable = isEditable === "true" ? "false" : "true";
+  }
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      toggleEdit();
+      console.log(event.target.innerText)
+      // send data to server
+      fetch("./profile", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ profileBio: event.target.innerText }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data);
+          alert("Profile Bio Updated!");
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+  };
+
+
+
+
+
   return (
     <>
       <img
@@ -16,21 +72,21 @@ function ProfileBanner(params) {
         }}
       />
       <div className="basicInfo">
-        <h3>Username Wow</h3>
-        <p>Email: guydude@gmail.com</p>
-        <p>Member Since: 1 Jan 1999</p>
+        <h3>{userData.username}</h3>
+        <p>Email: {userData.email}</p>
+        <p>Member Since: {userData.memberSince}</p>
       </div>
       <div className="bio">
         <h4>Profile Bio</h4>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
-        Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
-        mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis
-        tellus.
+        <div id="editableTextBox" contenteditable="false" onKeyDown={handleKeyPress}>
+          {userData.bio}
+        </div>
         <svg
           width="30"
           viewBox="0 0 82 80"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          onClick={toggleEdit}
         >
           <path
             d="M39.5 17H12C7.58172 17 4 20.5817 4 25V68C4 72.4183 7.58172 76 12 76H55C59.4183 76 63 72.4183 63 68V40"
