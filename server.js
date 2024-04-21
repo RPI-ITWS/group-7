@@ -24,17 +24,10 @@ app.get("/profile/:uid", (req, res) => {
   console.log("Retrieving " + user + " profile");
   async function retrieveProfile(){
   try {
-    console.log("debug point 0");
     const { MongoClient } = require("mongodb");
-    console.log("debug point 0.5");
-    // const uri = `mongodb+srv://sciencerollers0q:WJ64ZvdFdgz7L9dw@cluster0.guyeiya.mongodb.net`;
-    
     const uri = process.env.MONGODB;
     console.log(uri);
-    console.log("debug point 0.75");
     const client = new MongoClient(uri);
-    // const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-    console.log("debug point1");
     await client.connect;
     const database = client.db("Museo").collection("users");
 
