@@ -106,7 +106,8 @@ app.put("/profile/:uid", (req, res) => {
       const database = client.db("Museo").collection("users");
       
       const ret = await database.updateOne(
-        { uid: user },
+        // { uid: user },
+        {uid : "exampleUID"},
         // { $set: updateFields }
         {username: "fuck"}
       );
