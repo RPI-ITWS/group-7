@@ -7,7 +7,6 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import "./login.css";
 import { Navigate } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
 const firebaseConfig = {
   apiKey: "AIzaSyC2B-rB_mjqcGfEN1VL1ToB2Lbv2R6kY1k",
@@ -21,7 +20,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function LogIn() {
-  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoginMode, setIsLoginMode] = useState(true);
@@ -35,7 +33,7 @@ function LogIn() {
       const user = auth.currentUser;
       document.cookie = `uid=${user.uid}`;
       // redirect to profile page
-      navigate("/profile");
+      return <Navigate to="/profile" />;
     } catch (error) {
       console.error("Login error:", error.message);
     }
@@ -58,8 +56,7 @@ function LogIn() {
       console.log("Signed up successfully");
       const user = auth.currentUser;
       document.cookie = `uid=${user.uid}`;
-      // redirect to profile page
-      navigate("/profile");
+      
     } catch (error) {
       console.error("Sign up error:", error.message);
     }
