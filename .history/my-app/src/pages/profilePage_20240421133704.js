@@ -5,11 +5,10 @@ import "./profilePage.css";
 import ProfileBanner from "../components/profilepage/ProfileBanner";
 import MuseumList from "../components/profilepage/MuseumList";
 import FriendsList from "../components/profilepage/FriendsList";
-import { Navigate } from "react-router-dom";
 
 function ProfilePage() {
   if (!document.cookie) {
-    return <Navigate to="/login" />;
+    navi
   }
   return (
     <div
