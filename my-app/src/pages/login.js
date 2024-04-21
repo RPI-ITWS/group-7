@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Footer from "../components/footer";
 import SideBar from "../components/sideBar";
 import MuseumImage from "../images/MakeAcc.png";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth"; // Import both signInWithEmailAndPassword and createUserWithEmailAndPassword
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import "./login.css";
@@ -21,17 +21,26 @@ firebase.initializeApp(firebaseConfig);
 function LogIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoginMode, setIsLoginMode] = useState(true); // State to track login or signup mode
+  const [isLoginMode, setIsLoginMode] = useState(true);
+  const [isForgotPasswordMode, setIsForgotPasswordMode] = useState(false);
 
   const handleLogin = async () => {
     try {
       const auth = getAuth();
       await signInWithEmailAndPassword(auth, email, password);
       console.log("Logged in successfully");
-      // Additional actions after successful login
     } catch (error) {
       console.error("Login error:", error.message);
-      // Handle login errors
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    try {
+      const auth = getAuth();
+      await sendPasswordResetEmail(auth, email);
+      console.log("Password reset email sent");
+    } catch (error) {
+      console.error("Password reset error:", error.message);
     }
   };
 
@@ -40,135 +49,89 @@ function LogIn() {
       const auth = getAuth();
       await createUserWithEmailAndPassword(auth, email, password);
       console.log("Signed up successfully");
-      // Additional actions after successful sign-up
     } catch (error) {
       console.error("Sign up error:", error.message);
-      // Handle sign-up errors
     }
   };
 
   const toggleMode = () => {
-    setIsLoginMode((prevMode) => !prevMode); // Toggle between login and signup mode
+    setIsLoginMode((prevMode) => !prevMode);
+  };
+
+  const toggleForgotPasswordMode = () => {
+    setIsForgotPasswordMode((prevMode) => !prevMode);
   };
 
   return (
-    <div
-      className="App"
-      style={{ backgroundColor: "#E2D6C0", width: "100%", height: "100%" }}
-    >
-      <div
-        style={{ width: "100%", height: "30px", backgroundColor: "#FDF3DE" }}
-      ></div>
+    <div className="App" style={{ backgroundColor: "#E2D6C0", width: "100%", height: "100%" }}>
+      <div style={{ width: "100%", height: "30px", backgroundColor: "#FDF3DE" }}></div>
       <div style={{ backgroundColor: "#FDF3DE" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "flex-start",
-            height: "82vh",
-            borderRadius: "50px",
-            background: "#E2D6C0",
-            marginRight: "40px",
-            marginLeft: "170px",
-            paddingTop: "20px",
-            overflow: "hidden",
-          }}
-        >
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", height: "82vh", borderRadius: "50px", background: "#E2D6C0", marginRight: "40px", marginLeft: "170px", paddingTop: "20px", overflow: "hidden" }}>
           <div>
             <br />
             <br />
             <br />
-            {isLoginMode ? (
-              <h1
-                style={{
-                  color: "#E4622E",
-                  marginBottom: "0",
-                  textAlign: "center",
-                  fontSize: "36px",
-                  fontWeight: "300",
-                }}
-              >
-                Log into Your Museo Account
-              </h1>
+            {isForgotPasswordMode ? (
+              <h1 style={{ color: "#E4622E", marginBottom: "0", textAlign: "center", fontSize: "36px", fontWeight: "300" }}>Forgot Password</h1>
             ) : (
-              <h1
-                style={{
-                  color: "#E4622E",
-                  marginBottom: "0",
-                  textAlign: "center",
-                  fontSize: "36px",
-                  fontWeight: "300",
-                }}
-              >
-                Create your Museo Account
-              </h1>
+              <h1 style={{ color: "#E4622E", marginBottom: "0", textAlign: "center", fontSize: "36px", fontWeight: "300" }}>{isLoginMode ? "Log into Your Museo Account" : "Create your Museo Account"}</h1>
             )}
-            <h3>
-              {isLoginMode
-                ? "Enter your details below to log in!"
-                : "Enter your details below and start collecting!"}
-            </h3>
+            {!isForgotPasswordMode && (
+              <h3>
+                {isLoginMode
+                  ? "Enter your details below to log in!"
+                  : "Enter your details below and start collecting!"}
+              </h3>
+            )}
             <div style={{ display: "flex" }}>
-              <div
-                style={{
-                  margin: "2%",
-                  marginTop: "0px",
-                  textAlign: "left",
-                  fontSize: "18px",
-                  marginRight: "50px",
-                }}
-              >
+              <div style={{ margin: "2%", marginTop: "0px", textAlign: "left", fontSize: "18px", marginRight: "50px" }}>
                 <form>
                   <label htmlFor="email">Email:</label>
                   <br />
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+                  <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                   <br />
-                  <label htmlFor="password">Password:</label>
-                  <br />
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <br />
-                  {!isLoginMode && ( // Show confirm password field only in signup mode
+                  {!isForgotPasswordMode && (
+                    <>
+                      <label htmlFor="password">Password:</label>
+                      <br />
+                      <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                      <br />
+                    </>
+                  )}
+                  {!isLoginMode && (
                     <>
                       <label htmlFor="confirmPassword">Confirm Password:</label>
                       <br />
-                      <input
-                        type="password"
-                        id="confirmPassword"
-                        name="confirmPassword"
-                      />
+                      <input type="password" id="confirmPassword" name="confirmPassword" />
                       <br />
                     </>
                   )}
                 </form>
                 {isLoginMode ? (
-                  <button onClick={handleLogin}>Log In</button>
+                  <>
+                    {!isForgotPasswordMode && <button onClick={handleLogin}>Log In</button>}
+                    {!isForgotPasswordMode && <button onClick={toggleForgotPasswordMode}>Forgot Password</button>}
+                  </>
                 ) : (
-                  <button onClick={handleSignUp}>Create Account</button>
+                  <>
+                    <button onClick={handleSignUp}>Create Account</button>
+                    <br />
+                  </>
                 )}
-                <br />
-                <button onClick={toggleMode}>
-                  {isLoginMode ? "Switch to Sign Up" : "Switch to Log In"}
-                </button>
+                {!isForgotPasswordMode && (
+                  <button onClick={toggleMode}>
+                    {isLoginMode ? "Switch to Sign Up" : "Switch to Log In"}
+                  </button>
+                )}
+                {isForgotPasswordMode && (
+                  <>
+                    <button onClick={handleForgotPassword}>Submit</button>
+                    <br />
+                    <button onClick={toggleForgotPasswordMode}>Back to Login</button>
+                  </>
+                )}
               </div>
-              <img
-                src={MuseumImage}
-                alt="A patinaed statue from the Louvre of a man looking up"
-                width="590"
-                id="accountCreationImg"
-                height={"auto"}
-              />
+              <img src={MuseumImage} alt="A patinaed statue from the Louvre of a man looking up" width="590" id="accountCreationImg" height={"auto"} />
             </div>
           </div>
         </div>
@@ -180,4 +143,5 @@ function LogIn() {
     </div>
   );
 }
+
 export default LogIn;
