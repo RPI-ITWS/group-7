@@ -3,13 +3,6 @@ const app = express();
 const fs = require("fs");
 const port = 3000;
 app.use(express.static("my-app/build"));
-const bodyParser = require('body-parser');
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// parse application/json
-app.use(bodyParser.json());
 
 app.listen(port, () => {
   console.log("Listening on port 3000");
@@ -92,20 +85,17 @@ app.post("/profile", (req, res) => {
 /**
  * Update user profile info in mongo
  */
-app.put('/profile/:uid', async (req, res) => {
+app.put('/db/:id', async (req, res) => {
   try {
-    const { MongoClient } = require('mongodb');
-    const uri = process.env.MONGODB;
-    const client = new MongoClient(uri);
-    await client.connect();
-    const collection = client.db('Museo').collection('users');
+      const collection = client.db().collection('users');
+          // only update the fields that are provided in the request body
     const updateFields = {};
     for (const key in req.body) {
       if (req.body.hasOwnProperty(key)) {
         updateFields[key] = req.body[key];
       }
     }
-    const result = await collection.updateOne({ uid: req.params.uid }, {
+    const result = await collection.updateOne({ uid: }, {
       $set: updateFields
     });
       if (result.matchedCount === 0) {

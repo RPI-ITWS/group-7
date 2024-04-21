@@ -3,13 +3,6 @@ const app = express();
 const fs = require("fs");
 const port = 3000;
 app.use(express.static("my-app/build"));
-const bodyParser = require('body-parser');
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// parse application/json
-app.use(bodyParser.json());
 
 app.listen(port, () => {
   console.log("Listening on port 3000");
@@ -92,29 +85,40 @@ app.post("/profile", (req, res) => {
 /**
  * Update user profile info in mongo
  */
-app.put('/profile/:uid', async (req, res) => {
-  try {
-    const { MongoClient } = require('mongodb');
-    const uri = process.env.MONGODB;
-    const client = new MongoClient(uri);
-    await client.connect();
-    const collection = client.db('Museo').collection('users');
-    const updateFields = {};
-    for (const key in req.body) {
-      if (req.body.hasOwnProperty(key)) {
-        updateFields[key] = req.body[key];
-      }
+app.put("/profile/:uid", (req, res) => {
+  let user = req.params.uid;
+  console.log("Retrieving " + user + " profile");
+
+  // Determine which values are present in req.body
+  const updateFields = {};
+  for (const key in req.body) {
+    if (req.body.hasOwnProperty(key)) {
+      updateFields[key] = req.body[key];
     }
-    const result = await collection.updateOne({ uid: req.params.uid }, {
-      $set: updateFields
-    });
-      if (result.matchedCount === 0) {
-          return res.status(404).send({ message: 'No document found with the given id' });
-      }
-      res.status(200).send({ message: 'Document updated successfully' });
-  } catch (err) {
-      console.error(err);
-      res.status(500).send({ error: 'Internal Server Error' });
   }
+
+  async function updateProfile() {
+    try {
+      const { MongoClient } = require("mongodb");
+      const uri = process.env.MONGODB;
+      const client = new MongoClient(uri);
+      await client.connect();
+      const database = client.db("Museo").collection("users");
+
+      // Use $set operator to update fields
+      const ret = await database.updateOne(
+        { uid: user }, 
+        { $set: updateFields }
+      );
+
+      res.send(ret);
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    } finally {
+      await client.close();
+    }
+  }
+
+  updateProfile();
 });
 
