@@ -11,23 +11,16 @@ app.listen(port, () => {
 /**
  * Retrieve profile data from mongo
  */
-app.get("/profile/:uid", (req, res) => {
-
+app.get("/profile:uid", (req, res) => {
+  // Get the user id from the request url
   let user = req.params.uid;
+  
   console.log("Retrieving " + user + " profile");
   async function retrieveProfile(){
   try {
-    console.log("debug point 0");
     const { MongoClient } = require("mongodb");
-    console.log("debug point 0.5");
-    // const uri = `mongodb+srv://sciencerollers0q:WJ64ZvdFdgz7L9dw@cluster0.guyeiya.mongodb.net`;
-    
     const uri = process.env.MONGODB;
-    console.log(uri);
-    console.log("debug point 0.75");
     const client = new MongoClient(uri);
-    // const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-    console.log("debug point1");
     await client.connect;
     const database = client.db("Museo").collection("users");
 
@@ -35,13 +28,23 @@ app.get("/profile/:uid", (req, res) => {
     res.send(ret);
 
     } catch (error) {
-      console.error("Error getting profile:", error);
+      console.error("Error getting article:", error);
     } finally {
-      // await client.close();
+      await client.close();
     }
   }
   retrieveProfile();
 });
+// WRITE ME an example call to this endpoint would be:
+// fetch("/profile", {
+//   method: "GET",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+//   body: JSON.stringify({
+//     uid: "1234567890",
+//   }),
+// })
 
 /**
  * Create blank user profile in mongo for new user
@@ -75,7 +78,7 @@ app.post("/profile", (req, res) => {
       } catch (error) {
         console.error("Error getting article:", error);
       } finally {
-        // await client.close();
+        await client.close();
       }
     }
     createProfile();
@@ -115,7 +118,7 @@ app.put("/profile/:user", (req, res) => {
       } catch (error) {
         console.error("Error getting article:", error);
       } finally {
-        // await client.close();
+        await client.close();
       }
     }
     updateProfile();

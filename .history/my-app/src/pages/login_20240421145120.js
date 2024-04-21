@@ -59,7 +59,7 @@ function LogIn() {
       const user = auth.currentUser;
       document.cookie = `uid=${user.uid}`;
       // redirect to profile page
-      navigate("/profile");
+      return <Navigate to="/profile" />;
     } catch (error) {
       console.error("Sign up error:", error.message);
     }
