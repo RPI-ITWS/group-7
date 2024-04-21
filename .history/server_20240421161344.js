@@ -11,9 +11,9 @@ app.listen(port, () => {
 /**
  * Retrieve profile data from mongo
  */
-app.get("/profile/:uid", (req, res) => {
-  // Get the user id from the request url
-  let user = req.params.uid;
+app.get("/profile:uid", (req, res) => {
+  // Get the user id from the requ
+  
   console.log("Retrieving " + user + " profile");
   async function retrieveProfile(){
   try {
@@ -34,6 +34,16 @@ app.get("/profile/:uid", (req, res) => {
   }
   retrieveProfile();
 });
+// WRITE ME an example call to this endpoint would be:
+// fetch("/profile", {
+//   method: "GET",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+//   body: JSON.stringify({
+//     uid: "1234567890",
+//   }),
+// })
 
 /**
  * Create blank user profile in mongo for new user

@@ -16,24 +16,10 @@ app.get("/profile/:uid", (req, res) => {
   let user = req.params.uid;
   console.log("Retrieving " + user + " profile");
   async function retrieveProfile(){
-  try {
-    const { MongoClient } = require("mongodb");
-    const uri = process.env.MONGODB;
-    const client = new MongoClient(uri);
-    await client.connect;
-    const database = client.db("Museo").collection("users");
-
-    const ret = await database.findOne({ uid: user });
-    res.send(ret);
-
-    } catch (error) {
-      console.error("Error getting article:", error);
-    } finally {
-      await client.close();
-    }
   }
   retrieveProfile();
 });
+// WRITE ME an example call to this endpoint would be
 
 /**
  * Create blank user profile in mongo for new user

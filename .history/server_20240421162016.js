@@ -21,7 +21,7 @@ app.get("/profile/:uid", (req, res) => {
     const uri = process.env.MONGODB;
     const client = new MongoClient(uri);
     await client.connect;
-    const database = client.db("Museo").collection("users");
+    const database = client.db.collection("users");
 
     const ret = await database.findOne({ uid: user });
     res.send(ret);
@@ -34,6 +34,7 @@ app.get("/profile/:uid", (req, res) => {
   }
   retrieveProfile();
 });
+// WRITE ME an example call to this endpoint would be
 
 /**
  * Create blank user profile in mongo for new user

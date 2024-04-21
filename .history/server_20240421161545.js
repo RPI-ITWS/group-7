@@ -11,7 +11,7 @@ app.listen(port, () => {
 /**
  * Retrieve profile data from mongo
  */
-app.get("/profile/:uid", (req, res) => {
+app.get("/profile:uid", (req, res) => {
   // Get the user id from the request url
   let user = req.params.uid;
   console.log("Retrieving " + user + " profile");
@@ -34,6 +34,7 @@ app.get("/profile/:uid", (req, res) => {
   }
   retrieveProfile();
 });
+// WRITE ME an example call to this endpoint would be
 
 /**
  * Create blank user profile in mongo for new user
