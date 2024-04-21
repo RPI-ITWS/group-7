@@ -5,6 +5,7 @@ import "./profilePage.css";
 import ProfileBanner from "../components/profilepage/ProfileBanner";
 import MuseumList from "../components/profilepage/MuseumList";
 import FriendsList from "../components/profilepage/FriendsList";
+import RecentStamps from "../components/profilepage/RecentStamps";
 
 function ProfilePage() {
   return (
@@ -36,6 +37,9 @@ function ProfilePage() {
                 {" "}
                 <FriendsList />
               </div>
+            </div>
+            <div className="recentStamps box">
+              <RecentStamps />
             </div>
           </div>
         </div>
