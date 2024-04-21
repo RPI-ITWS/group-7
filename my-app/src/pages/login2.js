@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Footer from "../components/footer";
 import SideBar from "../components/sideBar";
 import MuseumImage from "../images/MakeAcc.png";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth"; // Import both signInWithEmailAndPassword and createUserWithEmailAndPassword
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import firebase from 'firebase/compat/app'; // Firebase import
+import 'firebase/compat/auth'; // Firebase import
 import "./login.css";
 
 const firebaseConfig = {
@@ -21,19 +21,6 @@ firebase.initializeApp(firebaseConfig);
 function LogIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoginMode, setIsLoginMode] = useState(true); // State to track login or signup mode
-
-  const handleLogin = async () => {
-    try {
-      const auth = getAuth();
-      await signInWithEmailAndPassword(auth, email, password);
-      console.log("Logged in successfully");
-      // Additional actions after successful login
-    } catch (error) {
-      console.error("Login error:", error.message);
-      // Handle login errors
-    }
-  };
 
   const handleSignUp = async () => {
     try {
@@ -45,10 +32,6 @@ function LogIn() {
       console.error("Sign up error:", error.message);
       // Handle sign-up errors
     }
-  };
-
-  const toggleMode = () => {
-    setIsLoginMode((prevMode) => !prevMode); // Toggle between login and signup mode
   };
 
   return (
@@ -78,36 +61,18 @@ function LogIn() {
             <br />
             <br />
             <br />
-            {isLoginMode ? (
-              <h1
-                style={{
-                  color: "#E4622E",
-                  marginBottom: "0",
-                  textAlign: "center",
-                  fontSize: "36px",
-                  fontWeight: "300",
-                }}
-              >
-                Log into Your Museo Account
-              </h1>
-            ) : (
-              <h1
-                style={{
-                  color: "#E4622E",
-                  marginBottom: "0",
-                  textAlign: "center",
-                  fontSize: "36px",
-                  fontWeight: "300",
-                }}
-              >
-                Create your Museo Account
-              </h1>
-            )}
-            <h3>
-              {isLoginMode
-                ? "Enter your details below to log in!"
-                : "Enter your details below and start collecting!"}
-            </h3>
+            <h1
+              style={{
+                color: "#E4622E",
+                marginBottom: "0",
+                textAlign: "center",
+                fontSize: "36px",
+                fontWeight: "300",
+              }}
+            >
+              Create your Museo Account
+            </h1>
+            <h3>Enter your details below and start collecting!</h3>
             <div style={{ display: "flex" }}>
               <div
                 style={{
@@ -119,6 +84,15 @@ function LogIn() {
                 }}
               >
                 <form>
+                  <label htmlFor="username">Username:</label>
+                  <br />
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    style={{ width: "300px" }}
+                  />
+                  <br />
                   <label htmlFor="email">Email:</label>
                   <br />
                   <input
@@ -139,28 +113,23 @@ function LogIn() {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <br />
-                  {!isLoginMode && ( // Show confirm password field only in signup mode
-                    <>
-                      <label htmlFor="confirmPassword">Confirm Password:</label>
-                      <br />
-                      <input
-                        type="password"
-                        id="confirmPassword"
-                        name="confirmPassword"
-                      />
-                      <br />
-                    </>
-                  )}
+                  <label htmlFor="confirmPassword">Confirm Password:</label>
+                  <br />
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                  />
+                  <br />
+                  <input
+                    type="checkbox"
+                    name="rememberMe"
+                    style={{ width: "auto", height: "auto" }}
+                  />
+                  <label> Remember Me </label>
                 </form>
-                {isLoginMode ? (
-                  <button onClick={handleLogin}>Log In</button>
-                ) : (
-                  <button onClick={handleSignUp}>Create Account</button>
-                )}
-                <br />
-                <button onClick={toggleMode}>
-                  {isLoginMode ? "Switch to Sign Up" : "Switch to Log In"}
-                </button>
+                <p>By creating an account you agree to our Terms & Privacy</p>
+                <button onClick={handleSignUp}>Create Account</button>
               </div>
               <img
                 src={MuseumImage}
