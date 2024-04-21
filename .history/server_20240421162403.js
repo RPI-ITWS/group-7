@@ -13,7 +13,7 @@ app.listen(port, () => {
  */
 app.get("/profile/:uid", (req, res) => {
   // Get the user id from the request url
-  let user = req.params.uid;
+  let user = req.pa.uid;
   console.log("Retrieving " + user + " profile");
   async function retrieveProfile(){
   try {

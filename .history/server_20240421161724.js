@@ -34,6 +34,7 @@ app.get("/profile/:uid", (req, res) => {
   }
   retrieveProfile();
 });
+// WRITE ME an example call to this endpoint would be
 
 /**
  * Create blank user profile in mongo for new user
