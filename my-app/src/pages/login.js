@@ -23,6 +23,11 @@ function LogIn() {
   const [password, setPassword] = useState('');
   const [isLoginMode, setIsLoginMode] = useState(true);
   const [isForgotPasswordMode, setIsForgotPasswordMode] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const clearErrorMessage = () => {
+    setErrorMessage(null);
+  };
 
   const handleLogin = async () => {
     try {
@@ -30,7 +35,7 @@ function LogIn() {
       await signInWithEmailAndPassword(auth, email, password);
       console.log("Logged in successfully");
     } catch (error) {
-      console.error("Login error:", error.message);
+      setErrorMessage(error.message);
     }
   };
 
@@ -40,7 +45,7 @@ function LogIn() {
       await sendPasswordResetEmail(auth, email);
       console.log("Password reset email sent");
     } catch (error) {
-      console.error("Password reset error:", error.message);
+      setErrorMessage(error.message);
     }
   };
 
@@ -50,7 +55,7 @@ function LogIn() {
       await createUserWithEmailAndPassword(auth, email, password);
       console.log("Signed up successfully");
     } catch (error) {
-      console.error("Sign up error:", error.message);
+      setErrorMessage(error.message);
     }
   };
 
@@ -60,6 +65,7 @@ function LogIn() {
 
   const toggleForgotPasswordMode = () => {
     setIsForgotPasswordMode((prevMode) => !prevMode);
+    setErrorMessage(null); // Reset error message when switching modes
   };
 
   return (
@@ -140,6 +146,12 @@ function LogIn() {
         <SideBar />
       </div>
       <Footer />
+      {errorMessage && (
+        <div className="error-popup">
+          <p>{errorMessage}</p>
+          <button onClick={clearErrorMessage}>Close</button>
+        </div>
+      )}
     </div>
   );
 }
