@@ -9,7 +9,7 @@ import { Navigate } from "react-router-dom";
 
 function ProfilePage() {
   if (!document.cookie) {
-    return <Navigate to="/login" />;
+    Navigate
   }
   return (
     <div

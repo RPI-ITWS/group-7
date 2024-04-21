@@ -8,7 +8,8 @@ import FriendsList from "../components/profilepage/FriendsList";
 import { Navigate } from "react-router-dom";
 
 function ProfilePage() {
-  if (!document.cookie) {
+  if (!document.cookie) 
+  {
     return <Navigate to="/login" />;
   }
   return (
