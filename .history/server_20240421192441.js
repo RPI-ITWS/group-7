@@ -3,13 +3,6 @@ const app = express();
 const fs = require("fs");
 const port = 3000;
 app.use(express.static("my-app/build"));
-const bodyParser = require('body-parser');
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// parse application/json
-app.use(bodyParser.json());
 
 app.listen(port, () => {
   console.log("Listening on port 3000");

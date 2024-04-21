@@ -3,6 +3,7 @@ const app = express();
 const fs = require("fs");
 const port = 3000;
 app.use(express.static("my-app/build"));
+const express = require('express');
 const bodyParser = require('body-parser');
 
 // parse application/x-www-form-urlencoded
