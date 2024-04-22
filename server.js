@@ -130,7 +130,6 @@ app.post("/museum/:uid", (req, res) => {
       const verification = client.db("Museo").collection("verificationCodes");
       let code = await verification.findOne({
         museumName: req.body.museumName
-        // museumName: "LowAstro"
       });
       code = code.verificationCode;
       console.log(code);
