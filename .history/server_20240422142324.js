@@ -239,7 +239,7 @@ app.post("/collection/:uid", (req, res) => {
       await client.connect;
 
       const database = client.db("Museo");
-      await database.createCollection(uid);
+      let ret= await database.createCollection(uid);
       res.send();
       // await database.createCollection(uid);
     } catch (error) {

@@ -229,26 +229,23 @@ app.get("/museums", (req, res) => {
   retrieveProfile();
 });
 
-app.post("/collection/:uid", (req, res) => {
+app.post("/collection/:uid", async (req, res) => {
   const uid = req.params.uid;
-  async function createCollection() {
-    try {
-      const { MongoClient } = require("mongodb");
-      const uri = process.env.MONGODB;
-      const client = new MongoClient(uri);
-      await client.connect;
+  try {
+    
+    const uri = process.env.MONGODB;
+    const client = new MongoClient(uri);
+    await client.connect();
 
-      const database = client.db("Museo");
-      await database.createCollection(uid);
-      res.send();
-      // await database.createCollection(uid);
-    } catch (error) {
-      console.error("Error getting profile:", error);
-    } finally {
-      // await client.close();
-    }
+    const database = client.db("Museo");
+    const ret = await database.createCollection(uid);
+    res.send(ret);
+  } catch (error) {
+    console.error("Error creating collection:", error);
+    res.status(500).send({ error: "Internal Server Error" });
+  } finally {
+    // await client.close();
   }
-  createCollection();
 });
 
 app.get("/user/:uid", (req, res) => {
@@ -256,6 +253,7 @@ app.get("/user/:uid", (req, res) => {
   async function retrieveProfile() {
     try {
       const { MongoClient } = require("mongodb");
+const { MongoClient } = require("mongodb");
       const uri = process.env.MONGODB;
       const client = new MongoClient(uri);
       await client.connect;

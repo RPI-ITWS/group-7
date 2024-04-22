@@ -239,9 +239,9 @@ app.post("/collection/:uid", (req, res) => {
       await client.connect;
 
       const database = client.db("Museo");
+      ret = await database.createCollection(uid);
+      res.send(ret);
       await database.createCollection(uid);
-      res.send();
-      // await database.createCollection(uid);
     } catch (error) {
       console.error("Error getting profile:", error);
     } finally {
