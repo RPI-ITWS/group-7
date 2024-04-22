@@ -3,7 +3,7 @@ const app = express();
 const fs = require("fs");
 const port = 3000;
 app.use(express.static("my-app/build"));
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -19,21 +19,19 @@ app.listen(port, () => {
  * Retrieve profile data from mongo
  */
 app.get("/profile/:uid", (req, res) => {
-
   let user = req.params.uid;
   console.log("Retrieving " + user + " profile");
-  async function retrieveProfile(){
-  try {
-    const { MongoClient } = require("mongodb");
-    const uri = process.env.MONGODB;
-    console.log(uri);
-    const client = new MongoClient(uri);
-    await client.connect;
-    const database = client.db("Museo").collection("users");
+  async function retrieveProfile() {
+    try {
+      const { MongoClient } = require("mongodb");
+      const uri = process.env.MONGODB;
+      console.log(uri);
+      const client = new MongoClient(uri);
+      await client.connect;
+      const database = client.db("Museo").collection("users");
 
-    const ret = await database.findOne({ uid: user });
-    res.send(ret);
-
+      const ret = await database.findOne({ uid: user });
+      res.send(ret);
     } catch (error) {
       console.error("Error getting profile:", error);
     } finally {
@@ -50,64 +48,110 @@ app.post("/profile", (req, res) => {
   let user = req.body.uid;
   console.log("Retrieving " + user + " profile");
 
-  async function createProfile(){
+  async function createProfile() {
     try {
       const { MongoClient } = require("mongodb");
       const uri = process.env.MONGODB;
       const client = new MongoClient(uri);
       await client.connect;
       const database = client.db("Museo").collection("users");
-      
-      const newArticle = { 
-       uid: user,
-       username: "",
-       email: "",
-       dateJoined: "",
+
+      const newArticle = {
+        uid: user,
+        username: "",
+        email: "",
+        dateJoined: "",
         visitedMuseums: [],
         savedMuseums: [],
         friends: [],
-        profileBio: "Empty bio"
+        profileBio: "Empty bio",
       };
 
       const ret = await database.insertOne(newArticle);
       res.send(ret);
-
-      } catch (error) {
-        console.error("Error getting article:", error);
-      } finally {
-        // await client.close();
-      }
+    } catch (error) {
+      console.error("Error getting article:", error);
+    } finally {
+      // await client.close();
     }
-    createProfile();
-
+  }
+  createProfile();
 });
 
 /**
  * Update user profile info in mongo
  */
-app.put('/profile/:uid', async (req, res) => {
+app.put("/profile/:uid", async (req, res) => {
   try {
-    const { MongoClient } = require('mongodb');
+    const { MongoClient } = require("mongodb");
     const uri = process.env.MONGODB;
     const client = new MongoClient(uri);
     await client.connect();
-    const collection = client.db('Museo').collection('users');
+    const collection = client.db("Museo").collection("users");
     const updateFields = {};
     for (const key in req.body) {
       if (req.body.hasOwnProperty(key)) {
         updateFields[key] = req.body[key];
       }
     }
-    const result = await collection.updateOne({ uid: req.params.uid }, {
-      $set: updateFields
-    });
-      if (result.matchedCount === 0) {
-          return res.status(404).send({ message: 'No document found with the given id' });
+    const result = await collection.updateOne(
+      { uid: req.params.uid },
+      {
+        $set: updateFields,
       }
-      res.status(200).send({ message: 'Document updated successfully' });
+    );
+    if (result.matchedCount === 0) {
+      return res
+        .status(404)
+        .send({ message: "No document found with the given id" });
+    }
+    res.status(200).send({ message: "Document updated successfully" });
   } catch (err) {
-      console.error(err);
-      res.status(500).send({ error: 'Internal Server Error' });
+    console.error(err);
+    res.status(500).send({ error: "Internal Server Error" });
   }
 });
 
+/**
+ * Create new stamp entry in users stamp collection
+ */
+app.post("/museum/:uid", (req, res) => {
+  let user = req.params.uid;
+  console.log("Retrieving " + user + " profile");
+
+  async function createStamp() {
+    try {
+      const { MongoClient } = require("mongodb");
+      const uri = process.env.MONGODB;
+      const client = new MongoClient(uri);
+      await client.connect;
+      const database = client.db("Museo").collection("users");
+
+      const verification = client.db("Museo").collection("verificationCodes");
+      const code = await verification.findOne({
+        museumName: req.body.museumName,
+      });
+      if (code === parseInt(req.body.verification)) {
+        const newArticle = {
+          museumName: req.body.museumName,
+          dateVisited: req.body.dateVisited,
+          notes: req.body.notes,
+          notesPublic: req.body.notesPublic,
+          stampPublic: req.body.stampPublic,
+          left: req.body.left,
+          top: req.body.top,
+        };
+
+        const ret = await database.insertOne(newArticle);
+        res.send(ret);
+      } else {
+        console.error("Invalid verification code");
+      }
+    } catch (error) {
+      console.error("Error getting article:", error);
+    } finally {
+      // await client.close();
+    }
+  }
+  createStamp();
+});
