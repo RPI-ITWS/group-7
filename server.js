@@ -125,11 +125,11 @@ app.post("/museum/:uid", (req, res) => {
       const uri = process.env.MONGODB;
       const client = new MongoClient(uri);
       await client.connect;
-      const database = client.db("Museo").collection("users");
+      const database = client.db("Museo").collection(user);
 
       const verification = client.db("Museo").collection("verificationCodes");
       const code = await verification.findOne({
-        museumName: req.body.museumName,
+        museumName: req.body.museumName
       });
       if (code === parseInt(req.body.verification)) {
         const newArticle = {
@@ -154,4 +154,30 @@ app.post("/museum/:uid", (req, res) => {
     }
   }
   createStamp();
+});
+
+/**
+ * Retrieve stamp info
+ */
+app.get("/museum/:uid", (req, res) => {
+  let user = req.params.uid;
+  console.log("Retrieving " + user + " profile");
+  async function retrieveProfile() {
+    try {
+      const { MongoClient } = require("mongodb");
+      const uri = process.env.MONGODB;
+      console.log(uri);
+      const client = new MongoClient(uri);
+      await client.connect;
+      const database = client.db("Museo").collection(user);
+
+      const ret = await database.findOne({ museumName : req.body.museumName});
+      res.send(ret);
+    } catch (error) {
+      console.error("Error getting profile:", error);
+    } finally {
+      // await client.close();
+    }
+  }
+  retrieveProfile();
 });
