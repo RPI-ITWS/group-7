@@ -131,7 +131,7 @@ app.post("/museum/:uid", (req, res) => {
       let code = await verification.findOne({
         museumName: req.body.museumName
       });
-      code = code["verificationCode"];
+      code = code.verificationCode;
       console.log(code);
       if (code === parseInt(req.body.verification)) {
         const newArticle = {
