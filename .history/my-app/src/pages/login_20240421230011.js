@@ -69,7 +69,6 @@ function LogIn() {
         body: JSON.stringify({ email: email, dateJoined: new Date().toLocaleDateString(), username: username }),
       });
       if (response.ok) {
-        console.log('Profile created successfully');
         // call a post at /collection/uid to create a collection for the user
         let collectionUrl = "/collection/" + user.uid;
         const collectionResponse = await fetch(collectionUrl, {
@@ -81,6 +80,7 @@ function LogIn() {
         });
         if (collectionResponse.ok) {
           console.log('Collection created successfully');
+          console.log('Profile created successfully');
           // redirect to homepage and reload the page
           window.location.href = "/";
         } else {

@@ -69,23 +69,15 @@ function LogIn() {
         body: JSON.stringify({ email: email, dateJoined: new Date().toLocaleDateString(), username: username }),
       });
       if (response.ok) {
-        console.log('Profile created successfully');
         // call a post at /collection/uid to create a collection for the user
         let collectionUrl = "/collection/" + user.uid;
+        
         const collectionResponse = await fetch(collectionUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ uid: user.uid, collection: [] }),
-        });
-        if (collectionResponse.ok) {
-          console.log('Collection created successfully');
-          // redirect to homepage and reload the page
-          window.location.href = "/";
-        } else {
-          console.error('Failed to create collection');
-        }
+
+        console.log('Profile created successfully');
+        // redirect to homepage and reload the page
+        window.location.href = "/";
+
       } else {
         console.error('Failed to create profile');
       }
