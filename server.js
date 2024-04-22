@@ -145,6 +145,14 @@ app.post("/museum/:uid", (req, res) => {
           top: req.body.top,
         };
 
+        // add museum to list of saved museums under user id 
+        const usersDB = client.db("Museo").collection("users");
+        let savedMuseums = userDB.findOne({ uid: user});
+        savedMuseums = savedMuseums.savedMuseums;
+        savedMuseums.push(req.body.muesumName);
+        await usersDB.updateOne({ uid: user}, {savedMuseums});
+
+        
         const ret = await database.insertOne(newArticle);
         res.send(ret);
       } else {
@@ -225,7 +233,7 @@ app.post("/collection/:uid", (req, res) => {
       const database = client.db("Museo");
       ret = await database.createCollection(uid);
       res.send(ret);
-      
+
     } catch (error) {
       console.error("Error getting profile:", error);
     } finally {
