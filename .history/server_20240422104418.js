@@ -159,9 +159,11 @@ app.post("/museum/:uid", (req, res) => {
         saved.push(req.body.museumName);
         console.log("saved:", saved);
         await usersDB.updateOne(
-          { uid: user},
-          { $set: { savedMuseums : saved } },
-          { upsert: true });
+          { _id: new ObjectID(req.params.id) },
+    { $set: { title: req.body.bookName, author: req.body.authorName } },
+    { upsert: true }
+          
+          { uid: user}, {savedMuseums : saved});
 
 
         const ret = await database.insertOne(newArticle);

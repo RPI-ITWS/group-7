@@ -160,8 +160,10 @@ app.post("/museum/:uid", (req, res) => {
         console.log("saved:", saved);
         await usersDB.updateOne(
           { uid: user},
-          { $set: { savedMuseums : saved } },
-          { upsert: true });
+    { $set: { savedMuseums : saved } },
+    { upsert: true }
+          
+          { uid: user}, {savedMuseums : saved});
 
 
         const ret = await database.insertOne(newArticle);

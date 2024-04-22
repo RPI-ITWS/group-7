@@ -132,7 +132,7 @@ app.post("/museum/:uid", (req, res) => {
       let code = await verification.findOne({
         museumName: req.body.museumName
       });
-      console.log(req.body.museumName);
+      con
       console.log(code);
 
       code = code.verificationCode;
@@ -157,11 +157,7 @@ app.post("/museum/:uid", (req, res) => {
         }
         saved = saved.savedMuseums;
         saved.push(req.body.museumName);
-        console.log("saved:", saved);
-        await usersDB.updateOne(
-          { uid: user},
-          { $set: { savedMuseums : saved } },
-          { upsert: true });
+        await usersDB.updateOne({ uid: user}, {savedMuseums : saved});
 
 
         const ret = await database.insertOne(newArticle);
