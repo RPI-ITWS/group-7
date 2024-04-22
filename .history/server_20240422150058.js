@@ -212,13 +212,7 @@ app.get("/museums", (req, res) => {
       const client = new MongoClient(uri);
       await client.connect;
       const database = client.db("Museo").collection("verificationCodes");
-      ret = [];
-      const codesIterator = database.find();
-      while (await codesIterator.hasNext()) {
-        temp = await codesIterator.next();
-        ret.push(temp["museumName"]);
-      }
-     
+      const ret = await database.find().toArray();
       res.send(ret);
     } catch (error) {
       console.error("Error getting profile:", error);

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const MuseumForm = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedMuseum, setSelectedMuseum] = useState("");
   const [showForm, setShowForm] = useState(true);
-
+  
 
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
@@ -18,14 +18,7 @@ useEffect(() => {
       for (let i = 0; i < data.length; i++) {
         museums.push({ id: data[i], name: data[i] });
       }
-      // add the options to the select element
-      let select = document.querySelector("select");
-      for (let i = 0; i < museums.length; i++) {
-        let option = document.createElement("option");
-        option.value = museums[i].id;
-        option.text = museums[i].name;
-        select.add(option);
-      }
+      console.log("111", museums);
     });
 }, []);
 
@@ -149,6 +142,11 @@ useEffect(() => {
                   }}
                 >
                   <option value="">Select a museum...</option>
+                  {museums.map((museum) => (
+                    <option key={museum.id} value={museum.id}>
+                      {museum.name}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div
