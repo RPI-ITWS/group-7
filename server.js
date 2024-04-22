@@ -147,10 +147,10 @@ app.post("/museum/:uid", (req, res) => {
 
         // add museum to list of saved museums under user id 
         const usersDB = client.db("Museo").collection("users");
-        let savedMuseums = userDB.findOne({ uid: user});
-        savedMuseums = savedMuseums.savedMuseums;
-        savedMuseums.push(req.body.museumName);
-        await usersDB.updateOne({ uid: user}, {savedMuseums : savedMuseums});
+        let saved = userDB.findOne({ uid: user});
+        saved = saved.savedMuseums;
+        saved.push(req.body.museumName);
+        await usersDB.updateOne({ uid: user}, {savedMuseums : saved});
 
 
         const ret = await database.insertOne(newArticle);
