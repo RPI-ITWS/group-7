@@ -68,8 +68,8 @@ function LogIn() {
       });
       if (response.ok) {
         console.log('Profile created successfully');
-        // redirect to profile page
-        navigate("/profile");
+        //n make a put request to update the user's profile info
+        
       } else {
         console.error('Failed to create profile');
       }

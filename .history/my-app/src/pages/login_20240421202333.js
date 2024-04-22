@@ -68,8 +68,23 @@ function LogIn() {
       });
       if (response.ok) {
         console.log('Profile created successfully');
-        // redirect to profile page
-        navigate("/profile");
+        // parse the email to get a username
+        const username = email.split('@')[0];
+        //n make a put request to update the user's profile info
+        const response = await fetch(`/profile/${user.uid}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: email, username: username, dateJoined: new Date().toISOString()}),
+        });
+        if (response.ok) {
+          console.log('Profile updated successfully');
+          // redirect to profile page
+          navigate("/profile");
+        } else {
+          console.error('Failed to update profile');
+        }
       } else {
         console.error('Failed to create profile');
       }

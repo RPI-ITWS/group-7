@@ -68,8 +68,7 @@ function LogIn() {
       });
       if (response.ok) {
         console.log('Profile created successfully');
-        // redirect to profile page
-        navigate("/profile");
+        
       } else {
         console.error('Failed to create profile');
       }

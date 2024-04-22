@@ -59,7 +59,7 @@ function LogIn() {
       const user = auth.currentUser;
       document.cookie = `uid=${user.uid}`;
       // call a post request to create a profile in the database using the user.uid
-      const response = await fetch('/profile', {
+      const response = await fetch('/api/profile', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -68,11 +68,14 @@ function LogIn() {
       });
       if (response.ok) {
         console.log('Profile created successfully');
+              // redirect to profile page
+      navigate("/profile");
         // redirect to profile page
         navigate("/profile");
       } else {
         console.error('Failed to create profile');
       }
+    } 
     } catch (error) {
       console.error("Sign up error:", error.message);
     }

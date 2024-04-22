@@ -68,8 +68,14 @@ function LogIn() {
       });
       if (response.ok) {
         console.log('Profile created successfully');
-        // redirect to profile page
-        navigate("/profile");
+        //n make a put request to update the user's profile info
+        const response = await fetch(`/profile/${user.uid}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: email, username: email }),
+        });
       } else {
         console.error('Failed to create profile');
       }

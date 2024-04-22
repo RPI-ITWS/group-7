@@ -66,13 +66,7 @@ function LogIn() {
         },
         body: JSON.stringify({ uid: user.uid }),
       });
-      if (response.ok) {
-        console.log('Profile created successfully');
-        // redirect to profile page
-        navigate("/profile");
-      } else {
-        console.error('Failed to create profile');
-      }
+      
     } catch (error) {
       console.error("Sign up error:", error.message);
     }
