@@ -212,3 +212,25 @@ app.get("/museums", (req, res) => {
   }
   retrieveProfile();
 });
+
+app.post("/collection/:uid", (req, res) => {
+  const uid = req.params.uid;
+  async function createCollection() {
+    try {
+      const { MongoClient } = require("mongodb");
+      const uri = process.env.MONGODB;
+      const client = new MongoClient(uri);
+      await client.connect;
+
+      const database = client.db("Museo");
+      ret = await database.createCollection(uid);
+      res.send(ret);
+      
+    } catch (error) {
+      console.error("Error getting profile:", error);
+    } finally {
+      // await client.close();
+    }
+  }
+  createCollection();
+});
