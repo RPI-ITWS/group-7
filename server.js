@@ -150,7 +150,7 @@ app.post("/museum/:uid", (req, res) => {
         let savedMuseums = userDB.findOne({ uid: user});
         savedMuseums = savedMuseums.savedMuseums;
         savedMuseums.push(req.body.museumName);
-        await usersDB.updateOne({ uid: user}, {savedMuseum : savedMuseums});
+        await usersDB.updateOne({ uid: user}, {savedMuseums : savedMuseums});
 
 
         const ret = await database.insertOne(newArticle);
