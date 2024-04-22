@@ -37,8 +37,8 @@ const MuseumForm = () => {
     console.log(data);
 
     // Send data to the server
-    let uid = document.cookie.split('=')[1];
-    fetch("./museum/" + uid, {
+    let 
+    fetch("./museum/exampleUID", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
