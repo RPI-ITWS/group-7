@@ -16,10 +16,44 @@ const MuseumForm = () => {
   ];
 
   const handleAddMuseum = () => {
-    setShowForm(false);
-    // change the ADD A MUSEUM button to say ADD STAMP
+    const museumId = selectedMuseum;
+    const dateVisited = selectedDate;
+    const verificationCode = document.getElementById("verificationCode").value;
+    const thoughtsAndNotes = document.getElementById("thoughtsAndNotes").value;
+    const makeNotesPublic = document.getElementById("checkbox1").checked;
+    const makeStampPublic = document.getElementById("checkbox2").checked;
 
-    // Add museum to database and trigger the abality to add the stamp
+    const data = {
+      meseumName: museumId,
+      dateVisited: dateVisited,
+      verificationCode: verificationCode,
+      Notes: thoughtsAndNotes,
+      notesPublic: makeNotesPublic,
+      stampPublic: makeStampPublic,
+      top: 0,
+      left: 0,
+    }
+
+    console.log(data);
+
+    // Send data to the server
+    fetch("./museum/exampleUID", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+    })
+
+
+
+    setShowForm(false);
   };
 
   const handleMuseumChange = (event) => {
@@ -194,6 +228,7 @@ const MuseumForm = () => {
                 }}
               >
                 <input
+                  id = "verificationCode"
                   type="text"
                   placeholder="code"
                   style={{
@@ -238,6 +273,7 @@ const MuseumForm = () => {
               }}
             >
               <textarea
+                id = "thoughtsAndNotes"
                 placeholder="Write whatever you want! What did you think of the museum?"
                 style={{
                   width: 450,
@@ -339,6 +375,7 @@ const MuseumForm = () => {
                   Make your notes public?
                 </div>
                 <input
+                  id = "checkbox1"
                   type="checkbox"
                   style={{
                     width: 20.36,
@@ -378,6 +415,7 @@ const MuseumForm = () => {
                   Make this stamp public?
                 </div>
                 <input
+                  id = "checkbox2"
                   type="checkbox"
                   style={{
                     width: 20.36,
