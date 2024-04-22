@@ -24,7 +24,7 @@ const MuseumForm = () => {
     const makeStampPublic = document.getElementById("checkbox2").checked;
 
     const data = {
-      meseumName: museumId,
+      museumName: museumId,
       dateVisited: dateVisited,
       verification: verificationCode,
       notes: thoughtsAndNotes,
