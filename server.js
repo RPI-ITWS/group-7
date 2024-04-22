@@ -152,7 +152,7 @@ app.post("/museum/:uid", (req, res) => {
         savedMuseums.push(req.body.muesumName);
         await usersDB.updateOne({ uid: user}, {savedMuseums});
 
-        
+
         const ret = await database.insertOne(newArticle);
         res.send(ret);
       } else {
@@ -231,9 +231,9 @@ app.post("/collection/:uid", (req, res) => {
       await client.connect;
 
       const database = client.db("Museo");
-      ret = await database.createCollection(uid);
-      res.send(ret);
-
+      // ret = await database.createCollection(uid);
+      // res.send(ret);
+      await database.createCollection(uid);
     } catch (error) {
       console.error("Error getting profile:", error);
     } finally {
