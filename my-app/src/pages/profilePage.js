@@ -6,7 +6,10 @@ import "./profilePage.css";
 import ProfileBanner from "../components/profilepage/ProfileBanner";
 import MuseumList from "../components/profilepage/MuseumList";
 import FriendsList from "../components/profilepage/FriendsList";
+
 import { Navigate } from "react-router-dom";
+import RecentStamps from "../components/profilepage/RecentStamps";
+
 
 
 
@@ -45,6 +48,9 @@ function ProfilePage(params) {
                 {" "}
                 <FriendsList message={message}/>
               </div>
+            </div>
+            <div className="recentStamps box">
+              <RecentStamps />
             </div>
           </div>
         </div>
