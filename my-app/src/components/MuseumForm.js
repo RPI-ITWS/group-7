@@ -10,8 +10,8 @@ const MuseumForm = () => {
   };
 
   const museums = [
-    { id: 1, name: "Museum 1" },
-    { id: 2, name: "Museum 2" },
+    { id: "LowAstro", name: "LowAstro" },
+    { id: "2", name: "Museum 2" },
     // Add more museums as needed
   ];
 
@@ -26,8 +26,8 @@ const MuseumForm = () => {
     const data = {
       meseumName: museumId,
       dateVisited: dateVisited,
-      verificationCode: verificationCode,
-      Notes: thoughtsAndNotes,
+      verification: verificationCode,
+      notes: thoughtsAndNotes,
       notesPublic: makeNotesPublic,
       stampPublic: makeStampPublic,
       top: 0,
