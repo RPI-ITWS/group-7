@@ -22,7 +22,6 @@ const MuseumForm = () => {
     const thoughtsAndNotes = document.getElementById("thoughtsAndNotes").value;
     const makeNotesPublic = document.getElementById("checkbox1").checked;
     const makeStampPublic = document.getElementById("checkbox2").checked;
-    console.log(museumId);
 
     const data = {
       museumName: museumId,

@@ -1,7 +1,7 @@
 // import { Link } from "react-router-dom";
 
 function MuseumList({params, message}) {
-  const museums = params.listType === "Visited Museums" ? message.savedMuseums: message.visitedMuseums ;
+  const museums = params.listType === "Visited Museums" ? message.visitedMuseums : message.savedMuseums;
   
   return (
     <>
@@ -10,8 +10,8 @@ function MuseumList({params, message}) {
         {museums.map((museum, index) => (
           <li key={index}>{museum}</li>
         ))}
+        // add the whole museum
       </ul>
-      {/* <h2>{museums}</h2> */}
     </>
   );
 }

@@ -35,7 +35,8 @@ app.get("/profile/:uid", (req, res) => {
       const userRet = await userDB.find().toArray();
       // add the user data to the ret object
       ret["stamps"] = userRet;
-      console.log(ret);
+      
+
       res.send(ret);
     } catch (error) {
       console.error("Error getting profile:", error);

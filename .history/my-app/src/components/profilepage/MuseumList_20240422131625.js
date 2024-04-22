@@ -1,7 +1,7 @@
 // import { Link } from "react-router-dom";
 
 function MuseumList({params, message}) {
-  const museums = params.listType === "Visited Museums" ? message.savedMuseums: message.visitedMuseums ;
+  const museums = params.listType === "Visited Museums" ? message.visitedMuseums : message.savedMuseums;
   
   return (
     <>

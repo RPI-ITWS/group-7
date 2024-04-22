@@ -22,7 +22,6 @@ const MuseumForm = () => {
     const thoughtsAndNotes = document.getElementById("thoughtsAndNotes").value;
     const makeNotesPublic = document.getElementById("checkbox1").checked;
     const makeStampPublic = document.getElementById("checkbox2").checked;
-    console.log(museumId);
 
     const data = {
       museumName: museumId,
@@ -48,8 +47,7 @@ const MuseumForm = () => {
     })
       .then((response) => {
         console.log(response);
-        //redirect to homepage
-        window.location.href = "/";
+        //r
       })
       .catch((error) => {
         console.error("Error:", error);

@@ -29,13 +29,8 @@ app.get("/profile/:uid", (req, res) => {
       const client = new MongoClient(uri);
       await client.connect;
       const database = client.db("Museo").collection("users");
+      // get the data from the u
       const ret = await database.findOne({ uid: user });
-      // get the data from the uid database and add it to the ret object
-      const userDB = client.db("Museo").collection(user);
-      const userRet = await userDB.find().toArray();
-      // add the user data to the ret object
-      ret["stamps"] = userRet;
-      console.log(ret);
       res.send(ret);
     } catch (error) {
       console.error("Error getting profile:", error);

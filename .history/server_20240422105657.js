@@ -4,7 +4,6 @@ const fs = require("fs");
 const port = 3000;
 app.use(express.static("my-app/build"));
 const bodyParser = require("body-parser");
-const { profile } = require("console");
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,13 +28,8 @@ app.get("/profile/:uid", (req, res) => {
       const client = new MongoClient(uri);
       await client.connect;
       const database = client.db("Museo").collection("users");
+
       const ret = await database.findOne({ uid: user });
-      // get the data from the uid database and add it to the ret object
-      const userDB = client.db("Museo").collection(user);
-      const userRet = await userDB.find().toArray();
-      // add the user data to the ret object
-      ret["stamps"] = userRet;
-      console.log(ret);
       res.send(ret);
     } catch (error) {
       console.error("Error getting profile:", error);
@@ -70,7 +64,6 @@ app.post("/profile/:uid", async (req, res) => {
         savedMuseums: req.body.savedMuseums || [],
         friends: req.body.friends || [],
         profileBio: req.body.profileBio || "Empty bio",
-        profilePic: req.body.profilePic || ""
       };
 
       const ret = await collection.insertOne(newProfile);
@@ -139,6 +132,8 @@ app.post("/museum/:uid", (req, res) => {
       let code = await verification.findOne({
         museumName: req.body.museumName
       });
+      console.log(req.body.museumName);
+      console.log(code);
 
       code = code.verificationCode;
       // console.log(code);
@@ -156,6 +151,7 @@ app.post("/museum/:uid", (req, res) => {
         // add museum to list of saved museums under user id 
         const usersDB = client.db("Museo").collection("users");
         let saved = await usersDB.findOne({ uid: user});
+        console.log(saved.savedMuseums);
         if (!saved.savedMuseums) {
           saved.savedMuseums = [];
         }
@@ -255,25 +251,4 @@ app.post("/collection/:uid", (req, res) => {
     }
   }
   createCollection();
-});
-
-app.get("/user/:uid", (req, res) => {
-  let user = req.params.uid;
-  async function retrieveProfile() {
-    try {
-      const { MongoClient } = require("mongodb");
-      const uri = process.env.MONGODB;
-      const client = new MongoClient(uri);
-      await client.connect;
-      const database = client.db("Museo").collection(user);
-      // return all documents in the collection
-      const ret = await database.find().toArray();
-      res.send(ret);
-    } catch (error) {
-      console.error("Error getting profile:", error);
-    } finally {
-      // await client.close();
-    }
-  }
-  retrieveProfile();
 });
