@@ -43,8 +43,8 @@ app.get("/profile/:uid", (req, res) => {
 /**
  * Create blank user profile in mongo for new user
  */
-app.post("/profile", (req, res) => {
-  let user = req.body.uid;
+app.post("/profile/:uid", async (req, res) => {
+  let user = req.params.uid;
   console.log("Retrieving " + user + " profile");
 
   async function createProfile() {
@@ -52,30 +52,32 @@ app.post("/profile", (req, res) => {
       const { MongoClient } = require("mongodb");
       const uri = process.env.MONGODB;
       const client = new MongoClient(uri);
-      await client.connect;
-      const database = client.db("Museo").collection("users");
+      await client.connect();
+      const collection = client.db("Museo").collection("users");
 
-      const newArticle = {
+      const newProfile = {
         uid: user,
-        username: "",
-        email: "",
-        dateJoined: "",
-        visitedMuseums: [],
-        savedMuseums: [],
-        friends: [],
-        profileBio: "Empty bio",
+        username: req.body.username || "",
+        email: req.body.email || "",
+        dateJoined: req.body.dateJoined || "",
+        visitedMuseums: req.body.visitedMuseums || [],
+        savedMuseums: req.body.savedMuseums || [],
+        friends: req.body.friends || [],
+        profileBio: req.body.profileBio || "Empty bio",
       };
 
-      const ret = await database.insertOne(newArticle);
+      const ret = await collection.insertOne(newProfile);
       res.send(ret);
     } catch (error) {
-      console.error("Error getting article:", error);
+      console.error("Error creating profile:", error);
+      res.status(500).send({ error: "Internal Server Error" });
     } finally {
       // await client.close();
     }
   }
   createProfile();
 });
+
 
 /**
  * Update user profile info in mongo
