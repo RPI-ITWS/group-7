@@ -25,7 +25,6 @@ app.get("/profile/:uid", (req, res) => {
     try {
       const { MongoClient } = require("mongodb");
       const uri = process.env.MONGODB;
-      console.log(uri);
       const client = new MongoClient(uri);
       await client.connect;
       const database = client.db("Museo").collection("users");
@@ -132,7 +131,7 @@ app.post("/museum/:uid", (req, res) => {
         museumName: req.body.museumName
       });
       code = code.verificationCode;
-      console.log(code);
+      // console.log(code);
       if (code === parseInt(req.body.verification)) {
         const newArticle = {
           museumName: req.body.museumName,
@@ -168,13 +167,41 @@ app.get("/museum/:uid", (req, res) => {
     try {
       const { MongoClient } = require("mongodb");
       const uri = process.env.MONGODB;
-      console.log(uri);
       const client = new MongoClient(uri);
       await client.connect;
       const database = client.db("Museo").collection(user);
 
       const ret = await database.findOne({ museumName : req.body.museumName});
       res.send(ret);
+    } catch (error) {
+      console.error("Error getting profile:", error);
+    } finally {
+      // await client.close();
+    }
+  }
+  retrieveProfile();
+});
+
+/**
+ * Retrieve museum names from verification Codes db 
+ */
+app.get("/museums", (req, res) => {
+  console.log("Retrieving " + user + " profile");
+  async function retrieveProfile() {
+    try {
+      const { MongoClient } = require("mongodb");
+      const uri = process.env.MONGODB;
+      const client = new MongoClient(uri);
+      await client.connect;
+      const database = client.db("Museo").collection(verificationCodes);
+      ret = [];
+      const codesIterator = database.find();
+      while (await codesIterator.hasNext()) {
+        temp = await codesIterator.next();
+        ret.push(temp["museumName"]);
+      }
+     
+      res.json(ret);
     } catch (error) {
       console.error("Error getting profile:", error);
     } finally {
