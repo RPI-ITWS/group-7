@@ -189,9 +189,8 @@ app.get("/museum/:uid", (req, res) => {
       await client.connect;
       const database = client.db("Museo").collection(user);
 
-      // const ret = await database.findOne({ museumName : req.body.museumName});
-      const ret = await database.find({});
-      res.json(ret);
+      const ret = await database.findOne({ museumName : req.body.museumName});
+      res.send(ret);
     } catch (error) {
       console.error("Error getting profile:", error);
     } finally {
@@ -240,7 +239,7 @@ app.post("/collection/:uid", (req, res) => {
       await client.connect;
 
       const database = client.db("Museo");
-      await database.createCollection(uid);
+      let ret= await database.createCollection(uid);
       res.send();
       // await database.createCollection(uid);
     } catch (error) {
