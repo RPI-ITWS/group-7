@@ -63,7 +63,7 @@ function homePage() {
               museumName="NYC Museum of Modern Art"
               sellingTitle="Social Media Without The Brainrot!"
               sellingText1="Museo is a social form of media that is not social media! Museo gives you the option to friend people you know to see what places they’ve been and what exhibits they like. It makes it easier to trade stories, give recommendations, and plan trips to visit more museums and collect more stamps."
-              sellingText2="Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales. Quisque sagittis orci ut diam condimentum, vel euismod erat placerat."
+              sellingText2="We are a social media that encourages getting offline. As you collect more stamps and stickers, you visit more museums, and in turn get to show your friends the places you've been. Our memory book is designed to be shown and passed around, an achievement to be proud of. We make sure that you have a platform to collect and share all of those museum experiences that you can unplug for and hold dear."
             />
 
             <FinalSell />
