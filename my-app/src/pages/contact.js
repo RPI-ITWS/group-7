@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "../components/footer";
 import SideBar from "../components/sideBar";
+import MuseumImage from "../images/MakeAcc.png";
 function Contact() {
   return (
     <div
@@ -13,7 +14,7 @@ function Contact() {
       <div style={{ backgroundColor: "#FDF3DE" }}>
         <div
           style={{
-            display: "flex",
+            // display: "flex",
             justifyContent: "center",
             alignItems: "flex-start",
             height: "82vh",
@@ -24,7 +25,42 @@ function Contact() {
             paddingTop: "20px",
             overflow: "hidden",
           }}
-        ></div>
+        >
+          <div style={{ display: "flex", padding: "10% 0" }}>
+            <div style={{ flex: "50%", paddingLeft: "30px" }}>
+              <h2 style={{ marginBottom: "0px", textAlign: "center" }}>
+                About Museo
+              </h2>
+              <p
+                style={{
+                  fontSize: "18px",
+                  fontStyle: "normal",
+                  padding: "25px",
+                  marginTop: "0",
+                }}
+              >
+                Museo was made by Michael H, Andrew R, David C, Trinity G, and
+                Emmie S, for our Web Science Systems Development class. It was
+                created in the Spring of 2024 over the span of 4 months.
+              </p>
+
+              <p style={{ fontSize: "18px", fontStyle: "normal" }}>
+                Questions? Comments? Bugs? <br />
+                Send us an email at{" "}
+                <a href="mailto:email@example.com">museo@gmail.com</a>
+              </p>
+            </div>
+            <div style={{ flex: "50%" }}>
+              <img
+                src={MuseumImage}
+                alt="A patinaed statue from the Louvre of a man looking up"
+                width="590"
+                id="accountCreationImg"
+                height={"auto"}
+              />
+            </div>
+          </div>
+        </div>
       </div>
       <div style={{ position: "fixed", top: 0, left: 0 }}>
         <SideBar />
