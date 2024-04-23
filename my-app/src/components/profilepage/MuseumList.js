@@ -1,9 +1,9 @@
-function MuseumList({params, message}) {
-  const museums = params.listType === "Visited Museums" ? message.visitedMuseums : message.savedMuseums;
+function MuseumList({message}) {
+  const museums = message.visitedMuseums;
 
   return (
     <>
-      <h3>{params.listType}</h3>
+      <h3>Visited Museums</h3>
       <ul>
         {museums.map((museum, index) => (
           <li key={index}>
