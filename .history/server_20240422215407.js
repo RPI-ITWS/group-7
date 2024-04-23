@@ -33,12 +33,8 @@ app.get("/profile/:uid", (req, res) => {
 
       const database2 = client.db("Museo").collection(user);
       // return all documents in the collection
-<<<<<<< Updated upstream
       ret["visitedMuseums"] = await database2.find().toArray();
-=======
-      ret["savedMuseums"] = await database2.find().toArray();
-
->>>>>>> Stashed changes
+      console.log(ret);
       res.send(ret);
     } catch (error) {
       console.error("Error getting profile:", error);

@@ -29,16 +29,12 @@ app.get("/profile/:uid", (req, res) => {
       const client = new MongoClient(uri);
       await client.connect;
       const database = client.db("Museo").collection("users");
-      let ret = await database.findOne({ uid: user });
+      const ret = await database.findOne({ uid: user });
 
       const database2 = client.db("Museo").collection(user);
       // return all documents in the collection
-<<<<<<< Updated upstream
       ret["visitedMuseums"] = await database2.find().toArray();
-=======
-      ret["savedMuseums"] = await database2.find().toArray();
-
->>>>>>> Stashed changes
+      console.log(ret);
       res.send(ret);
     } catch (error) {
       console.error("Error getting profile:", error);
