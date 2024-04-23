@@ -30,9 +30,6 @@ function AppRouter() {
             setUserData(defaultUserData);
           });
       }, []);
-
-    console.log(userData);
-    
     return (
         <BrowserRouter>
             <Routes>

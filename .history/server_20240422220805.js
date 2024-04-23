@@ -157,11 +157,7 @@ app.post("/museum/:uid", (req, res) => {
         visited = visited.visitedMuseums;
         visited.push(newArticle);
         await usersDB.updateOne(
-          { uid: user },
-          {
-            $set: { visitedMuseums: visited }
-          }
-        );
+          
         const ret = await database.insertOne(newArticle);
         res.send(ret);
       } else {

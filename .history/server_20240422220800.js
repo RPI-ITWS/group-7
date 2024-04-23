@@ -154,14 +154,7 @@ app.post("/museum/:uid", (req, res) => {
         // add museum to list of visited museums under user id 
         const usersDB = client.db("Museo").collection("users");
         let visited = await usersDB.findOne({ uid: user});
-        visited = visited.visitedMuseums;
-        visited.push(newArticle);
-        await usersDB.updateOne(
-          { uid: user },
-          {
-            $set: { visitedMuseums: visited }
-          }
-        );
+
         const ret = await database.insertOne(newArticle);
         res.send(ret);
       } else {

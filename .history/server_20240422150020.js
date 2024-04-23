@@ -4,7 +4,7 @@ const fs = require("fs");
 const port = 3000;
 app.use(express.static("my-app/build"));
 const bodyParser = require("body-parser");
-const { profile, Console } = require("console");
+const { profile } = require("console");
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,11 +29,7 @@ app.get("/profile/:uid", (req, res) => {
       const client = new MongoClient(uri);
       await client.connect;
       const database = client.db("Museo").collection("users");
-      let ret = await database.findOne({ uid: user });
-
-      const database2 = client.db("Museo").collection(user);
-      // return all documents in the collection
-      ret["visitedMuseums"] = await database2.find().toArray();
+      const ret = await database.findOne({ uid: user });
       res.send(ret);
     } catch (error) {
       console.error("Error getting profile:", error);
@@ -151,17 +147,20 @@ app.post("/museum/:uid", (req, res) => {
           top: req.body.top,
         };
 
-        // add museum to list of visited museums under user id 
+        // add museum to list of saved museums under user id 
         const usersDB = client.db("Museo").collection("users");
-        let visited = await usersDB.findOne({ uid: user});
-        visited = visited.visitedMuseums;
-        visited.push(newArticle);
+        let saved = await usersDB.findOne({ uid: user});
+        if (!saved.savedMuseums) {
+          saved.savedMuseums = [];
+        }
+        saved = saved.savedMuseums;
+        saved.push(req.body.museumName);
         await usersDB.updateOne(
-          { uid: user },
-          {
-            $set: { visitedMuseums: visited }
-          }
-        );
+          { uid: user},
+          { $set: { savedMuseums : saved } },
+          { upsert: true });
+
+
         const ret = await database.insertOne(newArticle);
         res.send(ret);
       } else {
@@ -212,14 +211,8 @@ app.get("/museums", (req, res) => {
       const uri = process.env.MONGODB;
       const client = new MongoClient(uri);
       await client.connect;
-      const database = client.db("Museo").collection("verificationCodes");
-      ret = [];
-      const codesIterator = database.find();
-      while (await codesIterator.hasNext()) {
-        temp = await codesIterator.next();
-        ret.push(temp["museumName"]);
-      }
-     
+      const database = client.db("Museo").collection(verificationCodes);
+
       res.send(ret);
     } catch (error) {
       console.error("Error getting profile:", error);
