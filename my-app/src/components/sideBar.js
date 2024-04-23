@@ -135,7 +135,21 @@ const SideBar = () => {
           top: 550,
           position: "relative",
         }}
-      ></div>
+
+      >
+        <p
+          style={{
+            fontSize: "18px",
+            fontFamily: "Kumbh Sans",
+            fontWeight: "400",
+            wordWrap: "break-word",
+            color: "#4B4338",
+            fontStyle: "normal",
+          }}
+        >
+        </p>
+      </div>
+
     </div>
   );
 };

@@ -19,7 +19,6 @@ const defaultUserData = {
 function AppRouter() {
     const [userData, setUserData] = useState(defaultUserData);
     const user = document.cookie.split('=')[1];
-    console.log(document.cookie);
     useEffect(() => {
         fetch("./profile/" + user)
           .then(response => response.json())
@@ -31,6 +30,9 @@ function AppRouter() {
             setUserData(defaultUserData);
           });
       }, []);
+
+    console.log(userData);
+    
     return (
         <BrowserRouter>
             <Routes>
