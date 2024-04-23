@@ -29,7 +29,7 @@ function ProfilePage(params) {
 
       <div style={{ backgroundColor: "#FDF3DE" }}>
         <div id="main_content">
-          <div class="profilepage_parent">
+          <div className="profilepage_parent overflow-auto" style={{ maxHeight: '500px' }}>
             <div className="title">
               <h2 style={{ textAlign: "center" }}>Your Profile</h2>
             </div>
@@ -37,10 +37,10 @@ function ProfilePage(params) {
               <ProfileBanner message={message} />
             </div>
             <div className="columns">
-              <div className="visitedMuseums box">
+              <div className="visitedMuseums box" style={{ maxHeight: '200px', overflowY: 'auto' }}>
                 <MuseumList params={{ listType: "Visited Museums" }} message={message} />
               </div>
-              <div className="savedMuseums box">
+              <div className="savedMuseums box" style={{ maxHeight: '200px', overflowY: 'auto' }}>
                 <MuseumList params={{ listType: "Saved Museums" }} message={message} />
               </div>
             </div>
