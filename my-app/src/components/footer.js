@@ -18,6 +18,7 @@ const Footer = () => {
           height: 112,
           margin: "0 auto",
           position: "relative",
+          paddingBottom: "10px",
         }}
       >
         <div
