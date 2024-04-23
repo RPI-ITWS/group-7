@@ -45,7 +45,7 @@ function homePage() {
               museumName="Boston Museum of Fine Arts"
               sellingTitle="Unique, Illustrated Stamps for every Museum"
               sellingText1="For every museum you visit you collect a stamp unique to that museum. And the more you go, the higher the chance of getting special achievement stamps for supporting your local museums!"
-              sellingText2="Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales. Quisque sagittis orci ut diam condimentum, vel euismod erat placerat."
+              sellingText2="In addition to the stamps, you also collect unique stickers depending on what type of museum you visit! For instance, if you vistit the Intrepid in New York City, you collect its unique sticker."
             />
 
             <SellingPointR
@@ -54,7 +54,7 @@ function homePage() {
               museumName="American Museum of Natural History"
               sellingTitle="Key Into Limited-Time Exhibits"
               sellingText1="We also offer stamps for limited run exhibits so you can remember your special times there and have something commemorative that you don’t have to spend exuberant amounts of money on like most museum gift shop plushies and t-shirts."
-              sellingText2="Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales. Quisque sagittis orci ut diam condimentum, vel euismod erat placerat."
+              sellingText2="All of our stamps are unique to museums, thus it follows ."
             />
 
             <SellingPointL
