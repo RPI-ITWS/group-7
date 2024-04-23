@@ -4,8 +4,8 @@ function FinalSell() {
   return (
     <div className="finalSell">
       <h6>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
-        Aliquam in hendrerit urna.
+        Start your museum experience scrapbook with Museo today. Create a free
+        account and start stampin!
       </h6>
       <Link to="/LogIn">
         <button>JOIN MUSEO!</button>
