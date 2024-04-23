@@ -1,33 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const MuseumForm = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedMuseum, setSelectedMuseum] = useState("");
   const [showForm, setShowForm] = useState(true);
 
-
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
   };
-
-useEffect(() => {
-  let museums = [];
-  fetch("./museums")
-    .then((response) => response.json())
-    .then((data) => {
-      for (let i = 0; i < data.length; i++) {
-        museums.push({ id: data[i], name: data[i] });
-      }
-      // add the options to the select element
-      let select = document.querySelector("select");
-      for (let i = 0; i < museums.length; i++) {
-        let option = document.createElement("option");
-        option.value = museums[i].id;
-        option.text = museums[i].name;
-        select.add(option);
-      }
+    let museums = [];
+    fetch("./museums") 
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        
+      }).catch((error) => {
+        console.error('Error:', error);
+      });
+  fetch("./museums") 
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      // setMuseums(data);
+    }).catch((error) => {
+      console.error('Error:', error);
     });
-}, []);
 
 
   const handleAddMuseum = () => {
@@ -149,6 +146,11 @@ useEffect(() => {
                   }}
                 >
                   <option value="">Select a museum...</option>
+                  {museums.map((museum) => (
+                    <option key={museum.id} value={museum.id}>
+                      {museum.name}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div

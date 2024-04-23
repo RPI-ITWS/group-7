@@ -18,14 +18,7 @@ useEffect(() => {
       for (let i = 0; i < data.length; i++) {
         museums.push({ id: data[i], name: data[i] });
       }
-      // add the options to the select element
-      let select = document.querySelector("select");
-      for (let i = 0; i < museums.length; i++) {
-        let option = document.createElement("option");
-        option.value = museums[i].id;
-        option.text = museums[i].name;
-        select.add(option);
-      }
+      
     });
 }, []);
 
@@ -149,6 +142,8 @@ useEffect(() => {
                   }}
                 >
                   <option value="">Select a museum...</option>
+                    </option>
+                  ))}
                 </select>
               </div>
               <div
