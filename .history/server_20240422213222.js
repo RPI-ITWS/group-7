@@ -156,7 +156,7 @@ app.post("/museum/:uid", (req, res) => {
         const usersDB = client.db("Museo").collection("users");
         let saved = await usersDB.findOne({ uid: user});
         if (!saved.visitedMuseums) {
-          saved.visitedMuseums = [];
+          saved.savedMuseums = [];
         }
         saved = saved.visitedMuseums;
         saved.push(req.body.museumName);
