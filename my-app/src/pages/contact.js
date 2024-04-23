@@ -47,7 +47,8 @@ function Contact() {
               <p style={{ fontSize: "18px", fontStyle: "normal" }}>
                 Questions? Comments? Bugs? <br />
                 Send us an email at{" "}
-                <a href="mailto:email@example.com">museo@gmail.com</a>
+                <a href="mailto:email@example.com">museo@gmail.com</a> <br />
+                (don't, actually. it's not a real email.)
               </p>
             </div>
             <div style={{ flex: "50%" }}>
