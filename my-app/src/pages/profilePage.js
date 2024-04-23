@@ -42,9 +42,6 @@ function ProfilePage(params) {
                 <div className="visitedMuseums box">
                   <MuseumList params={{ listType: "Visited Museums" }} message={message} />
                 </div>
-                <div className="savedMuseums box">
-                  <MuseumList params={{ listType: "Saved Museums" }} message={message} />
-                </div>
               </div>
               <div className="recentStamps box">
                 <RecentStamps />
