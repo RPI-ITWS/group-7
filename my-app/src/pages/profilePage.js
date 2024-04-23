@@ -33,20 +33,24 @@ function ProfilePage(params) {
             <div className="title">
               <h2 style={{ textAlign: "center" }}>Your Profile</h2>
             </div>
-            <div class="profileBanner box">
-              <ProfileBanner message={message} />
-            </div>
-            <div className="columns">
-              <div className="visitedMuseums box">
-                <MuseumList params={{ listType: "Visited Museums" }} message={message} />
+
+            <div style={{ overflow: 'auto', maxHeight: '40vw' }}>
+              <div class="profileBanner box">
+                <ProfileBanner message={message} />
               </div>
-              <div className="savedMuseums box">
-                <MuseumList params={{ listType: "Saved Museums" }} message={message} />
+              <div className="columns">
+                <div className="visitedMuseums box">
+                  <MuseumList params={{ listType: "Visited Museums" }} message={message} />
+                </div>
+                <div className="savedMuseums box">
+                  <MuseumList params={{ listType: "Saved Museums" }} message={message} />
+                </div>
+              </div>
+              <div className="recentStamps box">
+                <RecentStamps />
               </div>
             </div>
-            <div className="recentStamps box">
-              <RecentStamps />
-            </div>
+
           </div>
         </div>
       </div>
