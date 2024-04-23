@@ -37,7 +37,7 @@ function LogIn() {
       // redirect to profile page
       window.location.href = "/";
     } catch (error) {
-      console.error("Login error:", error.message);
+      window.alert("Login error:", error.message);
     }
   };
 
@@ -47,7 +47,7 @@ function LogIn() {
       await sendPasswordResetEmail(auth, email);
       console.log("Password reset email sent");
     } catch (error) {
-      console.error("Password reset error:", error.message);
+      window.alert("Password reset error:", error.message);
     }
   };
 
@@ -84,13 +84,13 @@ function LogIn() {
           // redirect to homepage and reload the page
           window.location.href = "/";
         } else {
-          console.error('Failed to create collection');
+          window.alert('Failed to create collection');
         }
       } else {
-        console.error('Failed to create profile');
+        window.alert('Failed to create profile');
       }
     } catch (error) {
-      console.error("Sign up error:", error.message);
+      window.alert("Sign up error:", error.message);
     }
   };
 
