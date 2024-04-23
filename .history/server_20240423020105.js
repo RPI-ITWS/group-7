@@ -16,11 +16,6 @@ app.listen(port, () => {
   console.log("Listening on port 3000");
 });
 
-app.get("/", (req, res) => {
-	fs = require('fs');
-	//serve the index.html file
-	res.sendFile(__dirname + "/public/index.html");
-});
 /**
  * Retrieve profile data from mongo
  */

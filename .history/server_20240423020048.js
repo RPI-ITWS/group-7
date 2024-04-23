@@ -16,11 +16,6 @@ app.listen(port, () => {
   console.log("Listening on port 3000");
 });
 
-app.get("/", (req, res) => {
-	fs = require('fs');
-	//serve the index.html file
-	res.sendFile(__dirname + "/public/index.html");
-});
 /**
  * Retrieve profile data from mongo
  */
@@ -39,12 +34,7 @@ app.get("/profile/:uid", (req, res) => {
       const database2 = client.db("Museo").collection(user);
       // return all documents in the collection
       const result = await database2.find().toArray();
-      if (result !== null) {
-        ret["visitedMuseums"] = result;
-      }
-      else {
-        ret["visitedMuseums"] = [];
-      }
+      if r
       res.send(ret);
     } catch (error) {
       console.error("Error getting profile:", error);

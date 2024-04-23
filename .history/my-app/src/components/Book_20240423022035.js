@@ -74,7 +74,6 @@ function MyBook(props) {
         }
         if (data.visitedMuseums[i].museumName === "Boston Museum of Science") {
           stamps[9] = 'block';
-          document.getElementById("stamp10").style.display = 'block';
         }
       }
       console.log(stamps);

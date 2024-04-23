@@ -34,47 +34,37 @@ function MyBook(props) {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      for (let i = 0; i < data.visitedMuseums.length; i++) {
-        console.log(data.visitedMuseums[i].museumName);
+      for (let i = 0; i < data.visitedMuseums; i++) {
+        cons
         if (data.visitedMuseums[i].museumName === "The Metropolitan Art Museum") {
           stamps[0] = 'block';
-          document.getElementById("stamp1").style.display = 'block';
         }
         if (data.visitedMuseums[i].museumName === "The Isabella Stewart Gardner Museum") {
           stamps[1] = 'block';
-          document.getElementById("stamp2").style.display = 'block';
         }
         if (data.visitedMuseums[i].museumName === "The Guggenheim Museum") {
           stamps[2] = 'block';
-          document.getElementById("stamp3").style.display = 'block';
         }
         if (data.visitedMuseums[i].museumName === "Albany Museum of Art") {
           stamps[3] = 'block';
-          document.getElementById("stamp4").style.display = 'block';
         }
         if (data.visitedMuseums[i].museumName === "Albany Institute of History and Art") {
           stamps[4] = 'block';
-          document.getElementById("stamp5").style.display = 'block';
         }
         if (data.visitedMuseums[i].museumName === "Museum of Natural History") {
           stamps[5] = 'block';
-          document.getElementById("stamp6").style.display = 'block';
         }
         if (data.visitedMuseums[i].museumName === "The Intrepid") {
           stamps[6] = 'block';
-          document.getElementById("stamp7").style.display = 'block';
         }
         if (data.visitedMuseums[i].museumName === "The Museum of Illusions") {
           stamps[7] = 'block';
-          document.getElementById("stamp8").style.display = 'block';
         }
         if (data.visitedMuseums[i].museumName === "Spyscape") {
           stamps[8] = 'block';
-          document.getElementById("stamp9").style.display = 'block';
         }
         if (data.visitedMuseums[i].museumName === "Boston Museum of Science") {
           stamps[9] = 'block';
-          document.getElementById("stamp10").style.display = 'block';
         }
       }
       console.log(stamps);
@@ -391,7 +381,6 @@ function MyBook(props) {
           <img src={bookLeft} alt="Page 1" />
           <Draggable bounds="parent">
             <img
-            id = "stamp2"
               src={stamp2}
               alt="stamp"
               style={{
@@ -406,7 +395,6 @@ function MyBook(props) {
           </Draggable>
           <Draggable bounds="parent">
             <img
-            id = "stamp3"
               src={stamp3}
               alt="stamp"
               style={{
@@ -421,7 +409,6 @@ function MyBook(props) {
           </Draggable>
           <Draggable bounds="parent">
             <img
-              id = "stamp7"
               src={stamp7}
               alt="stamp"
               style={{
@@ -440,7 +427,6 @@ function MyBook(props) {
 
           <Draggable bounds="parent">
             <img
-              id = "stamp1"
               src={stamp1}
               alt="stamp"
               style={{
@@ -456,7 +442,6 @@ function MyBook(props) {
 
           <Draggable bounds="parent">
             <img
-              id = "stamp9"
               src={stamp9}
               alt="stamp"
               style={{
@@ -471,7 +456,6 @@ function MyBook(props) {
           </Draggable>
           <Draggable bounds="parent">
             <img
-              id = "stamp10"
               src={stamp10}
               alt="stamp"
               style={{
@@ -489,7 +473,6 @@ function MyBook(props) {
           <img src={bookLeft} alt="Page 3" />
           <Draggable bounds="parent">
             <img
-              id = "stamp8"
               src={stamp8}
               alt="stamp"
               style={{
@@ -505,7 +488,6 @@ function MyBook(props) {
 
           <Draggable bounds="parent">
             <img
-              id = "stamp4"
               src={stamp4}
               alt="stamp"
               style={{
@@ -520,7 +502,6 @@ function MyBook(props) {
           </Draggable>
           <Draggable bounds="parent">
             <img
-              id = "stamp5"
               src={stamp5}
               alt="stamp"
               style={{
@@ -535,7 +516,6 @@ function MyBook(props) {
           </Draggable>
           <Draggable bounds="parent">
             <img
-              id = "stamp6"
               src={stamp6}
               alt="stamp"
               style={{

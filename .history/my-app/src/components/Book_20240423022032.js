@@ -66,15 +66,13 @@ function MyBook(props) {
         }
         if (data.visitedMuseums[i].museumName === "The Museum of Illusions") {
           stamps[7] = 'block';
-          document.getElementById("stamp8").style.display = 'block';
+          
         }
         if (data.visitedMuseums[i].museumName === "Spyscape") {
           stamps[8] = 'block';
-          document.getElementById("stamp9").style.display = 'block';
         }
         if (data.visitedMuseums[i].museumName === "Boston Museum of Science") {
           stamps[9] = 'block';
-          document.getElementById("stamp10").style.display = 'block';
         }
       }
       console.log(stamps);
