@@ -54,7 +54,7 @@ function homePage() {
               museumName="American Museum of Natural History"
               sellingTitle="Key Into Limited-Time Exhibits"
               sellingText1="We also offer stamps for limited run exhibits so you can remember your special times there and have something commemorative that you don’t have to spend exuberant amounts of money on like most museum gift shop plushies and t-shirts."
-              sellingText2="All of our stamps are unique to museums, thus it follows ."
+              sellingText2="All of our stamps are unique to museums, thus it follows that limited run exhibits will also be unique and unavailable after the museum itself closes the exhibit's doors. Tickets are a fickle thing, they can get lost in the washing machine, get wet and disintegrate, or fall out on a train or bus, never to be seen again, but Museo keeps all of your normal exhibit tickets and limited run exhibits so you never have to worry about forgetting an experience because you lost a piece of paper."
             />
 
             <SellingPointL
