@@ -26,59 +26,6 @@ function MyBook(props) {
   const handleCircleClick = () => {
     setShowForm(!showForm);
   };
-  //create variables for the stamps
-  let stamps = ['none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none'];
-  // call the /profile/:uid endpoint to get the user's profile data
-  const uid = document.cookie.split('=')[1];
-  fetch("./profile/" + uid)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      for (let i = 0; i < data.visitedMuseums.length; i++) {
-        console.log(data.visitedMuseums[i].museumName);
-        if (data.visitedMuseums[i].museumName === "The Metropolitan Art Museum") {
-          stamps[0] = 'block';
-          document.getElementById("stamp1").style.display = 'block';
-        }
-        if (data.visitedMuseums[i].museumName === "The Isabella Stewart Gardner Museum") {
-          stamps[1] = 'block';
-          document.getElementById("stamp2").style.display = 'block';
-        }
-        if (data.visitedMuseums[i].museumName === "The Guggenheim Museum") {
-          stamps[2] = 'block';
-          document.getElementById("stamp3").style.display = 'block';
-        }
-        if (data.visitedMuseums[i].museumName === "Albany Museum of Art") {
-          stamps[3] = 'block';
-          document.getElementById("stamp4").style.display = 'block';
-        }
-        if (data.visitedMuseums[i].museumName === "Albany Institute of History and Art") {
-          stamps[4] = 'block';
-          document.getElementById("stamp5").style.display = 'block';
-        }
-        if (data.visitedMuseums[i].museumName === "Museum of Natural History") {
-          stamps[5] = 'block';
-          document.getElementById("stamp6").style.display = 'block';
-        }
-        if (data.visitedMuseums[i].museumName === "The Intrepid") {
-          stamps[6] = 'block';
-          document.getElementById("stamp7").style.display = 'block';
-        }
-        if (data.visitedMuseums[i].museumName === "The Museum of Illusions") {
-          stamps[7] = 'block';
-          document.getElementById("stamp8").style.display = 'block';
-        }
-        if (data.visitedMuseums[i].museumName === "Spyscape") {
-          stamps[8] = 'block';
-          document.getElementById("stamp9").style.display = 'block';
-        }
-        if (data.visitedMuseums[i].museumName === "Boston Museum of Science") {
-          stamps[9] = 'block';
-          document.getElementById("stamp10").style.display = 'block';
-        }
-      }
-      console.log(stamps);
-    })
 
   return (
     <div
@@ -391,7 +338,6 @@ function MyBook(props) {
           <img src={bookLeft} alt="Page 1" />
           <Draggable bounds="parent">
             <img
-            id = "stamp2"
               src={stamp2}
               alt="stamp"
               style={{
@@ -400,13 +346,11 @@ function MyBook(props) {
                 position: "absolute",
                 left: "3vw",
                 top: "4vh",
-                display: stamps[1]
               }}
             />
           </Draggable>
           <Draggable bounds="parent">
             <img
-            id = "stamp3"
               src={stamp3}
               alt="stamp"
               style={{
@@ -415,13 +359,11 @@ function MyBook(props) {
                 position: "absolute",
                 left: "18vw",
                 top: "2vh",
-                display: stamps[2]
               }}
             />
           </Draggable>
           <Draggable bounds="parent">
             <img
-              id = "stamp7"
               src={stamp7}
               alt="stamp"
               style={{
@@ -430,7 +372,6 @@ function MyBook(props) {
                 position: "absolute",
                 left: "10vw",
                 top: "22vh",
-                display: stamps[6]
               }}
             />
           </Draggable>
@@ -440,7 +381,6 @@ function MyBook(props) {
 
           <Draggable bounds="parent">
             <img
-              id = "stamp1"
               src={stamp1}
               alt="stamp"
               style={{
@@ -449,14 +389,12 @@ function MyBook(props) {
                 position: "absolute",
                 left: "2vw",
                 top: "3vh",
-                display: stamps[0]
               }}
             />
           </Draggable>
 
           <Draggable bounds="parent">
             <img
-              id = "stamp9"
               src={stamp9}
               alt="stamp"
               style={{
@@ -465,13 +403,11 @@ function MyBook(props) {
                 position: "absolute",
                 left: "2vw",
                 top: "30vh",
-                display: stamps[8]
               }}
             />
           </Draggable>
           <Draggable bounds="parent">
             <img
-              id = "stamp10"
               src={stamp10}
               alt="stamp"
               style={{
@@ -480,7 +416,6 @@ function MyBook(props) {
                 position: "absolute",
                 left: "10vw",
                 top: "10vh",
-                display: stamps[9]
               }}
             />
           </Draggable>
@@ -489,23 +424,6 @@ function MyBook(props) {
           <img src={bookLeft} alt="Page 3" />
           <Draggable bounds="parent">
             <img
-              id = "stamp8"
-              src={stamp8}
-              alt="stamp"
-              style={{
-                width: "12vw",
-                height: "12vw",
-                position: "absolute",
-                left: "10vw",
-                top: "5vh",
-                display: stamps[7]
-              }}
-            />
-          </Draggable>
-
-          <Draggable bounds="parent">
-            <img
-              id = "stamp4"
               src={stamp4}
               alt="stamp"
               style={{
@@ -514,13 +432,38 @@ function MyBook(props) {
                 position: "absolute",
                 left: "6vw",
                 top: "30vh",
-                display: stamps[3]
               }}
             />
           </Draggable>
           <Draggable bounds="parent">
             <img
-              id = "stamp5"
+              src={stamp6}
+              alt="stamp"
+              style={{
+                width: "12vw",
+                height: "12vw",
+                position: "absolute",
+                left: "5vw",
+                top: "20vh",
+              }}
+            />
+          </Draggable>
+          <Draggable bounds="parent">
+            <img
+              src={stamp8}
+              alt="stamp"
+              style={{
+                width: "12vw",
+                height: "12vw",
+                position: "absolute",
+                left: "10vw",
+                top: "10vh",
+              }}
+            />
+          </Draggable>
+
+          <Draggable bounds="parent">
+            <img
               src={stamp5}
               alt="stamp"
               style={{
@@ -529,22 +472,6 @@ function MyBook(props) {
                 position: "absolute",
                 left: "16vw",
                 top: "15vh",
-                display: stamps[4]
-              }}
-            />
-          </Draggable>
-          <Draggable bounds="parent">
-            <img
-              id = "stamp6"
-              src={stamp6}
-              alt="stamp"
-              style={{
-                width: "15vw",
-                height: "12vw",
-                position: "absolute",
-                left: "2vw",
-                top: "20vh",
-                display: stamps[5]
               }}
             />
           </Draggable>
