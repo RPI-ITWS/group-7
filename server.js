@@ -30,6 +30,11 @@ app.get("/profile/:uid", (req, res) => {
       await client.connect;
       const database = client.db("Museo").collection("users");
       const ret = await database.findOne({ uid: user });
+
+      const database2 = client.db("Museo").collection(user);
+      // return all documents in the collection
+      ret["savedMuseums"] = await database2.find().toArray();
+
       res.send(ret);
     } catch (error) {
       console.error("Error getting profile:", error);
