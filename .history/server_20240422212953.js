@@ -194,7 +194,8 @@ app.get("/museum/:uid", (req, res) => {
       await client.connect;
       const database = client.db("Museo").collection(user);
 
-      const ret = await database.findOne({ museumName : req.body.museumName});
+      // const ret = await database.findOne({ museumName : req.body.museumName});
+      const ret = await database.find().toArray();
       res.send(ret);
     } catch (error) {
       console.error("Error getting profile:", error);
@@ -209,14 +210,13 @@ app.get("/museum/:uid", (req, res) => {
  * Retrieve museum names from verification Codes db 
  */
 app.get("/museums", (req, res) => {
-  console.log("Retrieving " + user + " profile");
   async function retrieveProfile() {
     try {
       const { MongoClient } = require("mongodb");
       const uri = process.env.MONGODB;
       const client = new MongoClient(uri);
       await client.connect;
-      const database = client.db("Museo").collection(verificationCodes);
+      const database = client.db("Museo").collection("verificationCodes");
       ret = [];
       const codesIterator = database.find();
       while (await codesIterator.hasNext()) {
@@ -224,7 +224,7 @@ app.get("/museums", (req, res) => {
         ret.push(temp["museumName"]);
       }
      
-      res.json(ret);
+      res.send(ret);
     } catch (error) {
       console.error("Error getting profile:", error);
     } finally {
