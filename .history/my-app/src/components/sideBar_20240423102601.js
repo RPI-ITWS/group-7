@@ -135,7 +135,6 @@ const SideBar = () => {
           top: 550,
           position: "relative",
         }}
-
       >
         <p
           style={{
@@ -149,7 +148,6 @@ const SideBar = () => {
         >
         </p>
       </div>
-
     </div>
   );
 };

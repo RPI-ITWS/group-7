@@ -14,6 +14,7 @@ function SellingPointR(params) {
         <div className="sellingTextR">
           <h4>{params.sellingTitle}</h4>
           <p>{params.sellingText1}</p>
+          <br />
           <p>{params.sellingText2}</p>
         </div>
       </div>
