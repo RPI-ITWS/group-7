@@ -302,22 +302,4 @@ app.put("/saveMuseum/:uid", async (req, res) => {
   }
 });
 
-app.get("/allMuseums", (req, res) => {
-  async function retrieveProfile() {
-    try {
-      const { MongoClient } = require("mongodb");
-      const uri = process.env.MONGODB;
-      const client = new MongoClient(uri);
-      await client.connect;
-      const database = client.db("Museo").collection("verificationCodes");
-      // return all documents in the collection
-      const ret = await database.find().toArray();
-      res.send(ret);
-    } catch (error) {
-      console.error("Error getting profile:", error);
-    } finally {
-      // await client.close();
-    }
-  }
-  retrieveProfile();
-});
+app.get("/allMuseums/:uid", (req, res) => {

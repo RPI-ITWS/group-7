@@ -303,6 +303,7 @@ app.put("/saveMuseum/:uid", async (req, res) => {
 });
 
 app.get("/allMuseums", (req, res) => {
+  let user = req.params.uid;
   async function retrieveProfile() {
     try {
       const { MongoClient } = require("mongodb");

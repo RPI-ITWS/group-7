@@ -13,7 +13,7 @@ import stamp9 from "../.././images/spyscape.png";
 function RecentStamps(params) {
   return (
     <>
-      <h3 style={{ margin: "0 0 10px 0" }}>All Stamps</h3>
+      <h3 style={{ margin: "0 0 10px 0" }}>Recent Stamps</h3>
       <div className="stamps" style={{ textAlign: "left" }}>
         <img className="recentStamp" src={stamp1} alt="" />
         <img className="recentStamp" src={stamp2} alt="" />
