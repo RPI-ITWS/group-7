@@ -151,17 +151,20 @@ app.post("/museum/:uid", (req, res) => {
           top: req.body.top,
         };
 
-        // add museum to list of visited museums under user id 
+        // add museum to list of saved museums under user id 
         const usersDB = client.db("Museo").collection("users");
-        let visited = await usersDB.findOne({ uid: user});
-        visited = visited.visitedMuseums;
-        visited.push(newArticle);
+        let saved = await usersDB.findOne({ uid: user});
+        if (!saved.savedMuseums) {
+          saved.savedMuseums = [];
+        }
+        saved = saved.savedMuseums;
+        saved.push(req.body.museumName);
         await usersDB.updateOne(
-          { uid: user },
-          {
-            $set: { visitedMuseums: visited }
-          }
-        );
+          { uid: user},
+          { $set: { savedMuseums : saved } },
+          { upsert: true });
+
+
         const ret = await database.insertOne(newArticle);
         res.send(ret);
       } else {
