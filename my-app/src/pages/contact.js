@@ -36,6 +36,7 @@ function Contact() {
                   fontSize: "18px",
                   fontStyle: "normal",
                   padding: "25px",
+                  paddingTop: "5px",
                   marginTop: "0",
                 }}
               >
@@ -43,9 +44,23 @@ function Contact() {
                 Emmie S, for our Web Science Systems Development class. It was
                 created in the Spring of 2024 over the span of 4 months.
               </p>
-
-              <p style={{ fontSize: "18px", fontStyle: "normal" }}>
-                Questions? Comments? Bugs? <br />
+              <h3
+                style={{
+                  fontFamily: "Della Respira",
+                  fontSize: "24px",
+                  color: "#e4622e",
+                  marginBottom: "0px",
+                }}
+              >
+                Questions? Comments? Bugs?{" "}
+              </h3>
+              <p
+                style={{
+                  fontSize: "18px",
+                  fontStyle: "normal",
+                  marginTop: "5px",
+                }}
+              >
                 Send us an email at{" "}
                 <a href="mailto:email@example.com">museo@gmail.com</a> <br />
                 (don't, actually. it's not a real email.)
