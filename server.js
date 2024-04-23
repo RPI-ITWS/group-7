@@ -272,3 +272,32 @@ app.get("/user/:uid", (req, res) => {
   }
   retrieveProfile();
 });
+
+app.put("/saveMuseum/:uid", async (req, res) => {
+  let user = req.params.uid;
+  try {
+    const { MongoClient } = require("mongodb");
+    const uri = process.env.MONGODB;
+    const client = new MongoClient(uri);
+    await client.connect();
+    const collection = client.db("Museo").collection("users");
+    let tempArray = collection.findOne({ uid: user});
+    tempArray = tempArray["savedMuseums"];
+    tempArray.push(req.body.museumName);
+    const result = await collection.updateOne(
+      { uid: req.params.uid },
+      {
+        savedMuseums: tempArray
+      }
+    );
+    if (result.matchedCount === 0) {
+      return res
+        .status(404)
+        .send({ message: "No document found with the given id" });
+    }
+    res.status(200).send({ message: "Document updated successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+});
