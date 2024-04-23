@@ -6,7 +6,7 @@ function Hero(params) {
     <div className="heroSection">
       <div className="heroText">
         <h2>MUSEO</h2>
-        <h4>Your museum stampbook!</h4>
+        <h4>Your Museum Stampbook!</h4>
         <p>
           Have you ever wanted to track museum visits and collect stamps to
           remember all of your trips instead of forgetting where you put the
