@@ -25,7 +25,6 @@ function RecentStamps(params) {
         <img className="recentStamp" src={stamp7} alt="" />
         <img className="recentStamp" src={stamp8} alt="" />
         <img className="recentStamp" src={stamp9} alt="" />
-        <img className="recentStamp" src={stamp10} alt="" />
       </div>
     </>
   );

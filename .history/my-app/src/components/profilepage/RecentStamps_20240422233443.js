@@ -8,7 +8,7 @@ import stamp6 from "../.././images/nhm.png";
 import stamp7 from "../.././images/intrepid.png";
 import stamp8 from "../.././images/illusions.png";
 import stamp9 from "../.././images/spyscape.png";
-import stamp10 from "../.././images/boston_museum_of_science.png";
+imp
 
 
 function RecentStamps(params) {
@@ -25,7 +25,6 @@ function RecentStamps(params) {
         <img className="recentStamp" src={stamp7} alt="" />
         <img className="recentStamp" src={stamp8} alt="" />
         <img className="recentStamp" src={stamp9} alt="" />
-        <img className="recentStamp" src={stamp10} alt="" />
       </div>
     </>
   );
